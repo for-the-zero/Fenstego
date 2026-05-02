@@ -13,7 +13,7 @@ import '@mdui/icons/connect-without-contact.js';
 import '@mdui/icons/feed--outlined.js';
 import '@mdui/icons/light.js';
 
-import { get_lang, init_i18n, change_lang } from './public_assets/i18n';
+import { get_lang, init_i18n, change_lang } from './global/i18n';
 import config_static_home from '../configs/home.static.yaml';
 init_i18n(config_static_home);
 const lang = get_lang();
@@ -31,7 +31,7 @@ if(ele_a.length > 0){
     });
 };
 
-import { get_dnmode, switch_dnmode } from './public_assets/dn_mode';
+import { get_dnmode, switch_dnmode } from './global/dn_mode';
 import { snackbar } from 'mdui/functions/snackbar.js';
 const e_switchdn_tt = $('.switch-daynight');
 const e_switchdn_btn = $('.switch-daynight > mdui-button-icon');

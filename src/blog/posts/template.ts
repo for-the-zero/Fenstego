@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Viewer from 'viewerjs';
 
-import '../../public_assets/global.ts';
+import '../../global/global.ts';
 import './template.css'; // 能跑就行
 
 // components
@@ -19,6 +19,7 @@ import 'mdui/components/chip.js';
 import 'mdui/components/tooltip.js';
 import 'mdui/components/card.js';
 import 'mdui/components/tooltip.js';
+import 'mdui/components/circular-progress.js';
 // icons
 import '@mdui/icons/arrow-back.js';
 import '@mdui/icons/arrow-forward.js';
@@ -29,10 +30,11 @@ import '@mdui/icons/tag.js';
 import '@mdui/icons/category--outlined.js';
 import '@mdui/icons/description--outlined.js';
 import '@mdui/icons/home.js';
-import '@mdui/icons/shuffle.js'
+import '@mdui/icons/shuffle.js';
+import '@mdui/icons/image.js';
 
 //
-import { init_i18n, get_lang } from '../../public_assets/i18n';
+import { init_i18n, get_lang } from '../../global/i18n';
 import config_static_blog from '../../../configs/post.static.yaml';
 init_i18n(config_static_blog);
 const lang = get_lang();
@@ -56,7 +58,7 @@ if(e_toc_data.length){
         function get_list_item(item: toc_item): string{
             if(item.children){;
                 return `
-                    <mdui-collapse>
+                    <mdui-collapse value="${item.slug}">
                         <mdui-collapse-item value="${item.slug}" trigger=".collapse-trigger">
                             <a href="#${item.slug}" slot="header" style="text-decoration: none; display: block;">
                                 <mdui-list-item rounded data-slug="${item.slug}">
@@ -86,12 +88,22 @@ if(e_toc_data.length){
 new Viewer(document.body);
 $('.article img').each(function() {
     const img_ele = this as HTMLImageElement;
-    const $img = $(img_ele);
+    const $ele_img = $(img_ele);
+    const ele_img_warp = $('<span class="img-wrap"></span>');
+    const placeholder = $(`<div class="img-placeholder">
+        <mdui-circular-progress></mdui-circular-progress>
+        <mdui-icon-image></mdui-icon-image>
+    </div>`);
+    $ele_img.wrap(ele_img_warp);
+    $ele_img.after(placeholder);
+    placeholder.children().each(function() {
+        this.style.cssText += ';position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;';
+    });
     if (img_ele.complete) {
-        $img.addClass('loaded');
+        $ele_img.addClass('loaded');
     } else {
-        $img.on('load', function() {
-            $img.addClass('loaded');
+        $ele_img.on('load', function() {
+            $ele_img.addClass('loaded');
         });
     }
 });
@@ -133,6 +145,10 @@ function highlightCurrentTocItem() {
             parentItem.attr('active', '');
             parentItem = parentItem.closest('mdui-collapse-item').parent().closest('mdui-collapse-item').find('> a[slot="header"] > mdui-list-item');
         };
+    };
+    const newUrl = `#${currentId}`;
+    if (window.location.hash !== newUrl && window.scrollY !== 0) {
+        history.replaceState(null, '', newUrl);
     };
 };
 let scrollTimer: number | null = null;

@@ -21,7 +21,7 @@ import '@mdui/icons/memory.js';
 import '@mdui/icons/update.js';
 
 //
-import { init_i18n, get_lang } from '../public_assets/i18n';
+import { init_i18n, get_lang } from '../global/i18n';
 import config_static_intro from '../../configs/intro.static.yaml';
 init_i18n(config_static_intro);
 const lang = get_lang();

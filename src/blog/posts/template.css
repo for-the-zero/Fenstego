@@ -1,4 +1,4 @@
-@import url('../../public_assets/global.css');
+@import url('../../global/global.css');
 @import url('../../../node_modules/highlight.js/styles/atom-one-dark.css');
 @import url('../../../node_modules/viewerjs/dist/viewer.min.css');
 @font-face {
@@ -110,6 +110,44 @@ mdui-top-app-bar-title{
     max-width: 100%;
 }
 
+.img-wrap {
+    position: relative;
+    display: inline-block;
+}
+.img-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.img-placeholder .loader-wrap {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.img-placeholder .loader-wrap > * {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.img-placeholder mdui-circular-progress {
+    position: absolute;
+    z-index: 1;
+}
+.img-placeholder mdui-icon-image {
+    position: relative;
+    z-index: 2;
+}
+.img-wrap img.loaded + .img-placeholder {
+    display: none;
+}
+
 /* markdown */
 .article h1,.article h2,.article h3,.article h4,.article h5,.article h6{
     margin: 0.5em 0;
@@ -125,18 +163,9 @@ pre.hljs{
     border-radius: var(--mdui-shape-corner-small);
     background-color: rgb(var(--mdui-color-surface-container-dark));
 }
-.article img {
-    background-color: rgb(var(--mdui-color-surface-bright));
-    opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.3, 0.35, 0, 1.00);
+.article img{
     max-width: 100%;
-    width: 100px;
-    height: 100px;
-}
-.article img.loaded {
-    opacity: 1;
-    width: auto;
-    height: auto;
+    max-height: 60vh;
 }
 .article ul, .article ul{
     margin: 0 !important;

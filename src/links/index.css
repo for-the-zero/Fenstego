@@ -1,4 +1,4 @@
-@import url('../public_assets/global.css');
+@import url('../global/global.css');
 
 body {
     padding: 24px;
@@ -33,8 +33,8 @@ mdui-card{
     height: 100%;
 }
 img, .svg-fill use{
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
 }
 .svg-fill use{
     fill: rgb(var(--mdui-color-on-surface));
@@ -45,8 +45,8 @@ img, .svg-fill use{
     display: flex;
     flex-direction: column;
     gap: 2px;
-    height: 40px;
-    max-height: 40px;
+    height: 44px;
+    max-height: 44px;
 }
 .label-hidden{
     width: 0;
@@ -88,7 +88,7 @@ img, .svg-fill use{
     margin-bottom: 5px;
 }
 .link-detail-title > img{
-    width: 40px;
+    width: 44px;
 }
 
 .seo-area{

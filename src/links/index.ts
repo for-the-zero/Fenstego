@@ -18,7 +18,7 @@ import '@mdui/icons/label.js';
 import '@mdui/icons/label-off--outlined.js';
 
 //
-import { init_i18n, get_lang } from '../public_assets/i18n';
+import { init_i18n, get_lang } from '../global/i18n';
 import config_static_links from '../../configs/links.static.yaml';
 init_i18n(config_static_links);
 const lang = get_lang();
@@ -46,8 +46,8 @@ function render_links(){
                         <mdui-card variant="filled" clickable>
                             <div class="icon-cont">
                                 ${link_item.img.endsWith('.svg')? `
-                                    <svg draggable="false" width="40px" height="40px" class="svg-fill">
-                                        <use href="../assets/intro/${link_item.img}" width="40px" height="40px"></use>
+                                    <svg draggable="false" width="44px" height="44px" class="svg-fill">
+                                        <use href="../assets/intro/${link_item.img}" width="44px" height="44px"></use>
                                     </svg>
                                 ` : `
                                     <img src="${link_item.img.startsWith('http://') || link_item.img.startsWith('https://')? link_item.img : `../assets/intro/${link_item.img}`}" draggable="false" />
