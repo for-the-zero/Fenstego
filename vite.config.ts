@@ -5,12 +5,12 @@ import { glob } from 'glob';
 import yaml from '@modyfi/vite-plugin-yaml';
 import jsYaml from 'js-yaml';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
-import { markdownBlog } from './scripts/vite-posts-plugin';
-import { viteMeta } from './scripts/vite-meta-plugin';
-import { viteSitemapMulti } from './scripts/vite-sitemap-plugin';
-import { viteExtendHead } from './scripts/vite-head-plugin';
-import { viteRssFeed } from './scripts/vite-rss-plugin';
-import { viteSeoArea } from './scripts/vite-seo-area-plugin';
+import { markdownBlog } from './scripts/plugin-posts';
+import { viteMeta } from './scripts/plugin-meta';
+import { viteSitemapMulti } from './scripts/plugin-sitemap';
+import { viteExtendHead } from './scripts/plugin-head';
+import { viteRssFeed } from './scripts/plugin-rss';
+import { viteSeoArea } from './scripts/plugin-seo-area';
 import { viteServerUrlFix, viteCopyImagesPlugin } from './scripts/vite-server-url-fix';
 
 const configPath = path.resolve(__dirname, 'configs/config.yaml');
@@ -73,11 +73,8 @@ export default defineConfig({
     viteMeta(),
     yaml(),
     markdownBlog({
-      inject: config.blog?.head_inject || [
-        '<!-- 往每篇文章的head注入一些元素 -->',
-        '<!-- Inject some elements into the head of each article -->',
-      ],
-      suffix: config.blog?.suffix || ' - Revealry Blog'
+      inject: config.blog?.head_inject || [],
+      suffix: config.blog?.suffix || ''
     }),
     viteStaticCopy({
       targets: [
@@ -86,8 +83,8 @@ export default defineConfig({
           dest: ''
         },
         {
-          src: 'assets/intro/**/*',
-          dest: 'assets/intro'
+          src: 'assets',
+          dest: ''
         },
         {
           src: 'vercel.json',
@@ -97,30 +94,26 @@ export default defineConfig({
           src: 'README.md',
           dest: ''
         }] : [])
-      ]
+      ],
+      silent: true
     }),
     viteSitemapMulti({
-      hostnames: config.sitemap?.hostnames || [
-        'https://for-the-zero.github.io/Revealry'
-      ],
+      hostname: config.sitemap?.hostname || '',
+      is_hostname_netlify: config.sitemap?.is_hostname_netlify || false,
+      alternatives: config.sitemap?.alternatives || [],
+      default_lang: config.sitemap?.default_lang,
       baseOutDir: 'dist'
     }),
     viteRssFeed({
-      hostname: config.rss?.hostname || 'https://for-the-zero.github.io/Revealry/',
-      feedTitle: config.rss?.title || 'Revealry Blog RSS Feed',
-      feedDescription: config.rss?.description || 'Latest blog posts from Revealry',
-      copyright: config.rss?.copyright || 'Copyright',
-      author: config.rss?.author || 'Author'
+      hostname: config.rss?.hostname || '',
+      feedTitle: config.rss?.title || '',
+      feedDescription: config.rss?.description || '',
+      copyright: config.rss?.copyright || '',
+      author: config.rss?.author || ''
     }),
     viteExtendHead({
-      heads: config.head_extension?.global || [
-        '<!-- 往每个页面的head注入一些元素（文章除外） -->',
-        '<!-- Inject some elements into the head of each page (excluding articles) -->'
-      ],
-      home: config.head_extension?.home || [
-        '<!-- 额外往首页的head注入一些元素 -->',
-        '<!-- Inject some elements into the head of the homepage -->'
-      ]
+      heads: config.head?.global || [],
+      home: config.head?.home || []
     }),
     viteSeoArea()
   ],

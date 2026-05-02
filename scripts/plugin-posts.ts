@@ -127,9 +127,9 @@ export function markdownBlog(options: MarkdownBlogOptions = {}): Plugin {
 
     function adjustImagePaths(html: string, isProduction: boolean): string {
         if (isProduction) {
-            return html.replace(/(<img[^>]*src=["'])(?:\.\/)?img\//g, '$1../img/');
+            return html.replace(/(<img[^>]*src=["'])(?:\.\/)?img\//g, '$1../../img/');
         } else {
-            return html.replace(/(<img[^>]*src=["'])(?:\.\/)?img\//g, '$1/blog/posts/img/');
+            return html.replace(/(<img[^>]*src=["'])(?:\.\/)?img\//g, '$1/blog/img/');
         };
     };
 
@@ -199,15 +199,9 @@ export function markdownBlog(options: MarkdownBlogOptions = {}): Plugin {
         configureServer(server) {
             server.middlewares.use((req, res, next) => {
                 const url = req.url || '';
-                if (url.match(/^\/blog\/posts\/[^/]+\/img\/[^/]+$/) || url.match(/^\/blog\/posts\/img\/[^/]+$/)) {
-                    let imgFile = '';
-                    const match1 = url.match(/^\/blog\/posts\/[^/]+\/img\/(.+)$/);
-                    const match2 = url.match(/^\/blog\/posts\/img\/(.+)$/);
-                    if (match1) {
-                        imgFile = match1[1];
-                    } else if (match2) {
-                        imgFile = match2[1];
-                    };
+                if (url.match(/^\/blog\/img\/[^/]+$/)) {
+                    const match = url.match(/^\/blog\/img\/(.+)$/);
+                    const imgFile = match ? match[1] : '';
                     if (imgFile) {
                         const imgPath = path.resolve(projectRoot, 'posts/img/', imgFile);
                         if (fs.existsSync(imgPath)) {

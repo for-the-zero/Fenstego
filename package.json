@@ -18,17 +18,17 @@
     "glob": "^11.0.3",
     "markdown-it-anchor": "^9.2.0",
     "typescript": "~5.9.2",
-    "vite": "^7.3.0",
-    "vite-plugin-static-copy": "^3.1.1"
+    "vite": "^8.0.10",
+    "vite-plugin-static-copy": "^4.1.0"
   },
   "dependencies": {
     "@mdui/icons": "^1.0.3",
-    "@modyfi/vite-plugin-yaml": "^1.0.2",
+    "@modyfi/vite-plugin-yaml": "^1.1.1",
     "@vscode/markdown-it-katex": "^1.1.2",
     "highlight.js": "^11.11.1",
     "jquery": "^3.7.1",
-    "katex": "^0.16.22",
-    "markdown-it": "^14.1.0",
+    "katex": "^0.16.45",
+    "markdown-it": "^14.1.1",
     "markdown-it-link-attributes": "^4.0.1",
     "mdui": "^2.1.4",
     "pace-js": "^1.2.4",

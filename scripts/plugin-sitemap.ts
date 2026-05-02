@@ -9,11 +9,14 @@ interface BlogItem { filename: string; title?: string; date?: string }
 interface MetaItem { path: string; title: string }
 
 export function viteSitemapMulti(opts: {
-    hostnames: string[];
+    hostname: string;
+    is_hostname_netlify: boolean;
+    alternatives?: string[];
+    default_lang?: null | 'zh-CN' | 'en' | 'both';
     baseOutDir: string;
 }): Plugin {
     let config: ResolvedConfig;
-    const { hostnames, baseOutDir } = opts;
+    const { hostname, is_hostname_netlify, alternatives, default_lang, baseOutDir } = opts;
     const gitTime = (file: string): Date | null => {
         try {
             const t = execSync(`git log --diff-filter=A --follow --format=%at -- "${file}" | tail -1`, {
@@ -54,7 +57,31 @@ export function viteSitemapMulti(opts: {
                 const date = it.date ? new Date(it.date) : gitTime(mdFile) ?? fs.statSync(mdFile).ctime;
                 urlMap.set(`/blog/posts/${it.filename}/`, { loc: `/blog/posts/${it.filename}/`, lastmod: date });
             };
-            const multi = hostnames.length > 1;
+            if (default_lang) {
+                const pathsToProcess = ['/blog/', '/links/'];
+                if (default_lang === 'zh-CN' || default_lang === 'en') {
+                    for (const path of pathsToProcess) {
+                        const entry = urlMap.get(path);
+                        if (entry) {
+                            const newLoc = `${path}?lang=${default_lang}`;
+                            urlMap.delete(path);
+                            urlMap.set(newLoc, { ...entry, loc: newLoc });
+                        };
+                    };
+                } else if (default_lang === 'both') {
+                    for (const path of pathsToProcess) {
+                        const entry = urlMap.get(path);
+                        if (entry) {
+                            urlMap.delete(path);
+                            const zhLoc = `${path}?lang=zh-CN`;
+                            urlMap.set(zhLoc, { ...entry, loc: zhLoc });
+                            const enLoc = `${path}?lang=en`;
+                            urlMap.set(enLoc, { ...entry, loc: enLoc });
+                        };
+                    };
+                };
+            };
+            const multi = alternatives && alternatives.length > 0;
             const lines: string[] = [];
             lines.push('<?xml version="1.0" encoding="UTF-8"?>');
             lines.push(multi
@@ -63,9 +90,25 @@ export function viteSitemapMulti(opts: {
 
             for (const u of urlMap.values()) {
                 lines.push('  <url>');
-                const base = hostnames[0].replace(/\/$/, '');
+                const base = hostname.replace(/\/$/, '');
                 const isHtmlFile = u.loc.endsWith('.html');
-                const finalLoc = isHtmlFile ? u.loc : (u.loc.endsWith('/') ? u.loc : u.loc + '/');
+                let finalLoc = u.loc;
+                if (!isHtmlFile) {
+                    const queryIndex = finalLoc.indexOf('?');
+                    let pathPart = finalLoc;
+                    let queryPart = '';
+                    if (queryIndex !== -1) {
+                        pathPart = finalLoc.substring(0, queryIndex);
+                        queryPart = finalLoc.substring(queryIndex);
+                    };
+                    if (!pathPart.endsWith('/')) {
+                        pathPart += '/';
+                    };
+                    finalLoc = pathPart + queryPart;
+                };
+                if (is_hostname_netlify) {
+                    finalLoc = finalLoc.toLowerCase();
+                };
                 const main = encodeURI(base + finalLoc);
                 lines.push(`    <loc>${main}</loc>`);
                 if (u.lastmod) {
@@ -75,8 +118,7 @@ export function viteSitemapMulti(opts: {
                     lines.push(`    <lastmod>${year}-${month}-${day}</lastmod>`);
                 }
                 if (multi) {
-                    for (const h of hostnames) {
-                        if(h === hostnames[0]){continue;};
+                    for (const h of alternatives!) {
                         const href = encodeURI(`${h.replace(/\/$/, '')}${finalLoc}`);
                         lines.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${href}" />`);
                     };
@@ -92,7 +134,8 @@ export function viteSitemapMulti(opts: {
             if (fs.existsSync(notFoundHtmlPath)) {
                 try {
                     let htmlContent = fs.readFileSync(notFoundHtmlPath, 'utf-8');
-                    const scriptTag = `<script id="hostnames" type="application/json">${JSON.stringify(hostnames)}</script>`;
+                    const allHostnames = [hostname, ...(alternatives || [])];
+                    const scriptTag = `<script id="hostnames" type="application/json">${JSON.stringify(allHostnames)}</script>`;
                     if (htmlContent.includes('</body>')) {
                         htmlContent = htmlContent.replace('</body>', `${scriptTag}\n</body>`);
                     } else {
