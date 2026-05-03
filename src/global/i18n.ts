@@ -44,6 +44,10 @@ export function init_i18n(i18n_File: staticinfo){
             let ele2Btl = $(tl.selector);
             if(tl.target === 'inner-html'){
                 ele2Btl.html(tl.text);
+            } else if(tl.target === 'text'){
+                ele2Btl.text(tl.text);
+            } else if(tl.target === 'replace'){
+                ele2Btl.replaceWith($(tl.text));
             } else {
                 ele2Btl.attr(tl.target, tl.text);
             };

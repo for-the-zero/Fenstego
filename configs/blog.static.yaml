@@ -3,27 +3,21 @@ zh-CN: # 语言: 中文
   - selector: 'mdui-top-app-bar-title'
     target: inner-html
     text: 博客 # 博客页面的顶部导航栏标题
-  - selector: '.container > h1'
-    target: inner-html
-    text: 欢迎来到博客页面 # 博客页面的主标题
-  - selector: '.footer'
-    target: inner-html
-    text: 注脚文本 # 页面底部的注脚文本
-  - selector: 'mdui-segmented-button-group > mdui-segmented-button:nth-child(1)'
-    target: inner-html
-    text: 标题 # 搜索栏的“标题”筛选按钮
-  - selector: 'mdui-segmented-button-group > mdui-segmented-button:nth-child(2)'
-    target: inner-html
-    text: 分类 # 搜索栏的“分类”筛选按钮
-  - selector: 'mdui-segmented-button-group > mdui-segmented-button:nth-child(3)'
-    target: inner-html
-    text: 标签 # 搜索栏的“标签”筛选按钮
-  - selector: 'mdui-text-field'
-    target: label
-    text: 搜索 # 搜索输入框的标签文本
   - selector: 'mdui-top-app-bar > mdui-tooltip'
     target: content
     text: '随机看一篇' # 搜索栏的“随机”按钮
+  - selector: '.container > h1'
+    target: inner-html
+    text: 欢迎来到博客页面 # 博客页面的主标题
+  - selector: '.container > p'
+    target: inner-html
+    text: 一些描述 # 博客页面的小描述
+  - selector: 'mdui-collapse-item > mdui-list-item > div.h-box > span'
+    target: inner-html
+    text: 筛选 # 博客页面的筛选面板
+  - selector: 'mdui-collapse-item > mdui-list-item > mdui-tooltip'
+    target: content
+    text: 切换视图（卡片/列表） # 筛选旁边的开关
 
   _other: 
     title: 博客 | Revealry 示例 # 设置浏览器标签页中显示的页面标题
@@ -32,28 +26,22 @@ en: # Language: English
   translations: 
   - selector: 'mdui-top-app-bar-title'
     target: inner-html
-    text: Blog # The title in the top app bar on the blog page.
-  - selector: '.container > h1'
-    target: inner-html
-    text: Welcome to the blog page # The main heading on the blog page.
-  - selector: '.footer'
-    target: inner-html
-    text: Footer text # The footer text at the bottom of the page.
-  - selector: 'mdui-segmented-button-group > mdui-segmented-button:nth-child(1)'
-    target: inner-html
-    text: Title # The "Title" filter button in the search bar.
-  - selector: 'mdui-segmented-button-group > mdui-segmented-button:nth-child(2)'
-    target: inner-html
-    text: Category # The "Category" filter button in the search bar.
-  - selector: 'mdui-segmented-button-group > mdui-segmented-button:nth-child(3)'
-    target: inner-html
-    text: Tag # The "Tag" filter button in the search bar.
-  - selector: 'mdui-text-field'
-    target: label
-    text: Search Here # The label text for the search input field.
+    text: Blog # The title in the top app bar on the blog page
   - selector: 'mdui-top-app-bar > mdui-tooltip'
     target: content
-    text: 'Random Post' # The "Random" button in the search bar.
+    text: 'Random Post' # Random btn
+  - selector: '.container > h1'
+    target: inner-html
+    text: Welcome to My Blog! # Titile of th blog page
+  - selector: '.container > p'
+    target: inner-html
+    text: desc # desc
+  - selector: 'mdui-collapse-item > mdui-list-item > div.h-box > span'
+    target: inner-html
+    text: Filter # Filter panel title
+  - selector: 'mdui-collapse-item > mdui-list-item > mdui-tooltip'
+    target: content
+    text: Toggle View # Switch beside th filter
 
   _other: 
     title: Blog | Revealry Demo # Sets the page title displayed in the browser tab.

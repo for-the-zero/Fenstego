@@ -8,16 +8,16 @@ body{
     gap: 12px;
     align-items: normal;
 }
-h1{
+.container > h1{
     font-weight: 550;
-    font-size: 1.5em;
+    font-size: 1.75em;
     margin: 0;
+    padding-left: 30px;
 }
-h2{
-    font-weight: 500;
-}
-.footer{
+.container > p{
     margin: 0;
+    white-space: pre-wrap;
+    padding-left: 30px;
 }
 
 mdui-menu-item::part(container){
@@ -27,7 +27,6 @@ mdui-menu-item::part(container){
 .posts {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
 }
 @media (min-width: 650px) {
     .posts {
@@ -54,6 +53,7 @@ mdui-menu-item::part(container){
     text-overflow: ellipsis;
     white-space: nowrap;
     flex-shrink: 0;
+    font-weight: 500;
 }
 .post-content > p {
     margin: 0;
@@ -66,22 +66,67 @@ mdui-menu-item::part(container){
     justify-content: flex-start;
     gap: 5px;
 }
-
-.searching{
-    margin: auto;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-.searching > mdui-text-field, .searching > mdui-select{
-    display: inline-block;
-    width: auto;
-}
 mdui-tooltip > mdui-chip::part(icon){
     margin-right: 4px;
 }
 mdui-tooltip > mdui-chip::part(label){
     padding: 0;
     margin: 0;
+}
+.post-list-subt{
+    color: rgb(var(--mdui-color-outline));
+    font-size: 8px;
+    flex-wrap: wrap;
+    line-height: 10px;
+    justify-content: space-between;
+}
+.post-list-subt + h2{
+    margin: 10px 0;
+    font-weight: 400;
+}
+mdui-list, mdui-list-item{
+    width: 100%;
+}
+
+mdui-list-item::part(container){
+    cursor: none;
+}
+mdui-collapse-item > mdui-list-item > :nth-child(2){
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: center;
+}
+mdui-text-field{
+    width: 60vw;
+    max-width: 300px;
+}
+mdui-collapse-item > div.v-box{
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 5px;
+    padding-left: 18px;
+}
+.filter-item-container{
+    gap: 10px;
+    justify-items: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+.filter-item-container > :nth-child(1){ 
+    min-width: 24px;
+    min-height: 2rem;
+}
+.filter-item-container:nth-child(1){
+    align-items: center;
+}
+.filter-item-container > div{
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-items: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 .seo-area{

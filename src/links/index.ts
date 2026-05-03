@@ -75,8 +75,8 @@ function detail_of_links(link_item: links_item){
     e_dia_body.append(`
         <div class="h-box link-detail-title">
             ${link_item.img.endsWith('.svg')? `
-                <svg draggable="false" width="40px" height="40px" class="svg-fill">
-                    <use href="../assets/intro/${link_item.img}" width="40px" height="40px"></use>
+                <svg draggable="false" width="44px" height="44px" class="svg-fill">
+                    <use href="../assets/intro/${link_item.img}" width="44px" height="44px"></use>
                 </svg>
             ` : `
                 <img src="${link_item.img.startsWith('http://') || link_item.img.startsWith('https://')? link_item.img : `../assets/intro/${link_item.img}`}" draggable="false" />
