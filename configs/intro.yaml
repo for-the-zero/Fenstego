@@ -1,18 +1,13 @@
 zh-CN: # 语言: 中文
-  # 你的名字
   name: 君の名は
-  # 年龄，生日等
-  age: 24岁，事学生，1970-01-01
-  # 性别
-  sex: 沃尔玛购物袋
-  # 所在地
-  locate: 地球
-  # 爱好
-  hobby: 我不到啊
-  # 个人简介
-  profile: 这里可以写你的简介
-  # 身份
+  aka: a.k.a. 啊吧啊吧啊吧
   identity: 关于身份
+  bio: 这里可以写你的简介
+  sex: 沃尔玛购物袋
+  birth: 24岁，事学生，1970-01-01
+  hobby: 我不到啊
+  location: 地球
+  more: 更多内容
   # 详细介绍，随机显示一条
   detail_intros: 
     - |
@@ -32,8 +27,10 @@ zh-CN: # 语言: 中文
     - '1 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium corrupti dicta doloribus soluta. Eum, voluptatibus accusantium inventore excepturi accusamus aspernatur adipisci fugit doloremque maiores recusandae dignissimos consequuntur suscipit iste vero!'
     - '2 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium corrupti dicta doloribus soluta. Eum, voluptatibus accusantium inventore excepturi accusamus aspernatur adipisci fugit doloremque maiores recusandae dignissimos consequuntur suscipit iste vero!'
     - '3 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium corrupti dicta doloribus soluta. Eum, voluptatibus accusantium inventore excepturi accusamus aspernatur adipisci fugit doloremque maiores recusandae dignissimos consequuntur suscipit iste vero!'
+  # 刷新时间，数字(ms)或字符串(将被eval，得到数字)
+  intros_wait: '(()=>{let t = Math.random() * 5000;console.log(t);return t;})()'
   # 从 v1.hitokoto.cn 获取“一言”的概率 (0 到 1)，设为 false 则禁用
-  hitokoto: 0.5
+  hitokoto: 1
   # 自定义句子列表，设为 null 可禁用此功能
   sentences:
     - text: | # 句子内容
@@ -46,6 +43,8 @@ zh-CN: # 语言: 中文
       note: null
     - text: 你是一个一个一个什么啊
       note: null
+  # 刷新时间，数字(ms)或字符串(将被eval，得到数字)
+  sentence_wait: 1000
   # Lifelog 功能的相关配置，设为 null 可禁用此功能
   lifelog:
     # 获取 Lifelog 数据的 API 地址
@@ -65,21 +64,15 @@ zh-CN: # 语言: 中文
       when_no_records: '最近没在用电脑，不知道在干嘛'
 
 en: # Language: English
-  # Your name
   name: yourname
-  # Age, birthday, etc.
-  age: 200yo, 1970-01-01
-  # Gender
-  sex: Amazon shopping bag
-  # Location
-  locate: Earth
-  # Hobby
-  hobby: idk
-  # Your profile introduction
-  profile: You can write a brief introduction here
-  # Identity
+  aka: a.k.a.
   identity: About your identity
-  # More detailed introductions, randomly display one
+  bio: Input your bio here
+  sex: Walmart shopping bag
+  birth: 1970-01-01
+  hobby: idk
+  location: Earth
+  more: more
   detail_intros: 
     - qwertyuiop
     - asdfghjkl
@@ -91,6 +84,7 @@ en: # Language: English
     - '1 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium corrupti dicta doloribus soluta. Eum, voluptatibus accusantium inventore excepturi accusamus aspernatur adipisci fugit doloremque maiores recusandae dignissimos consequuntur suscipit iste vero!'
     - '2 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium corrupti dicta doloribus soluta. Eum, voluptatibus accusantium inventore excepturi accusamus aspernatur adipisci fugit doloremque maiores recusandae dignissimos consequuntur suscipit iste vero!'
     - '3 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium corrupti dicta doloribus soluta. Eum, voluptatibus accusantium inventore excepturi accusamus aspernatur adipisci fugit doloremque maiores recusandae dignissimos consequuntur suscipit iste vero!'
+  intros_wait: 500
   # The probability (from 0 to 1) of fetching a sentence from v1.hitokoto.cn, set to false to disable
   hitokoto: 0.5
   # A list of custom sentences. Can be set to null to disable this feature.
@@ -111,4 +105,5 @@ en: # Language: English
   #       # exe name: Friendly name (can be null)
   #       "program.exe": "A friendly name"
   #     when_no_records: "Text to display when no laptop data is available."
+  sentence_wait: 0
   lifelog: null

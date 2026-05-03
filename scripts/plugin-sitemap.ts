@@ -106,10 +106,8 @@ export function viteSitemapMulti(opts: {
                     };
                     finalLoc = pathPart + queryPart;
                 };
-                if (is_hostname_netlify) {
-                    finalLoc = finalLoc.toLowerCase();
-                };
-                const main = encodeURI(base + finalLoc);
+                const finalLocForHostname = is_hostname_netlify ? finalLoc.toLowerCase() : finalLoc;
+                const main = encodeURI(base + finalLocForHostname);
                 lines.push(`    <loc>${main}</loc>`);
                 if (u.lastmod) {
                     const year = u.lastmod.getFullYear();

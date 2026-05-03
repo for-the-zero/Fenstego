@@ -24,18 +24,22 @@ declare module '*.static.yaml' {
 
 interface intro {
     name: string;
-    age: string;
-    sex: string;
-    locate: string;
-    hobby: string;
-    profile: string;
+    aka: string;
     identity: string;
+    bio: string;
+    sex: string;
+    birth: string;
+    hobby: string;
+    location: string;
+    more: string;
     detail_intros: string[];
+    intros_wait: number | string;
     hitokoto: number | false;
     sentences: Array<{
         text: string;
         note: string | null;
     }> | null;
+    sentence_wait: number | string;
     lifelog: {
         url: string;
         phone: {

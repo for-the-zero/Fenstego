@@ -11,6 +11,7 @@ import 'mdui/components/chip.js';
 import 'mdui/components/list-item.js';
 import 'mdui/components/collapse.js'
 import 'mdui/components/collapse-item.js';
+import 'mdui/components/linear-progress.js';
 // icons
 import '@mdui/icons/arrow-back.js';
 import '@mdui/icons/shuffle.js';
@@ -19,6 +20,11 @@ import '@mdui/icons/battery-0-bar.js';
 import '@mdui/icons/battery-charging-full.js';
 import '@mdui/icons/memory.js';
 import '@mdui/icons/update.js';
+import '@mdui/icons/location-on--outlined.js';
+import '@mdui/icons/wc.js';
+import '@mdui/icons/cake--outlined.js';
+import '@mdui/icons/favorite-border.js';
+import '@mdui/icons/more-horiz.js';
 
 //
 import { init_i18n, get_lang } from '../global/i18n';
@@ -31,54 +37,72 @@ import config_intro_all from '../../configs/intro.yaml';
 const config_intro = config_intro_all[lang] as intro;
 
 //
-const e_cards_name = $('body > div.container > div > div > div:nth-child(1) > div:nth-child(2) > mdui-card > p');
-const e_cards_age = $('body > div.container > div > div > div:nth-child(1) > div:nth-child(2) > div > div > mdui-card:nth-child(1) > p');
-const e_cards_sex = $('body > div.container > div > div > div:nth-child(1) > div:nth-child(2) > div > div > mdui-card:nth-child(2) > p');
-const e_cards_locate = $('body > div.container > div > div > div:nth-child(1) > div:nth-child(2) > div > mdui-card > p');
-const e_cards_hobby = $('body > div.container > div > div > div:nth-child(1) > div:nth-child(1) > mdui-card:nth-child(2) > p');
-const e_cards_profile = $('body > div.container > div > div > div:nth-child(2) > mdui-card:nth-child(1) > p');
-const e_cards_identity = $('body > div.container > div > div > div:nth-child(2) > mdui-card:nth-child(2) > p');
-
-e_cards_name.html(config_intro.name);
-e_cards_age.html(config_intro.age);
-e_cards_sex.html(config_intro.sex);
-e_cards_locate.html(config_intro.locate);
-e_cards_hobby.html(config_intro.hobby);
-e_cards_profile.html(config_intro.profile);
-e_cards_identity.html(config_intro.identity);
+$('.basic-info > div:nth-child(1) > h1').html(config_intro.name);
+$('.basic-info > div:nth-child(1) > :nth-child(3)').html(config_intro.aka);
+$('.basic-info > div:nth-child(1) > :nth-child(5)').html(config_intro.identity);
+$('.basic-info > div:nth-child(2) > h2').html(config_intro.bio);
+$('.bi-lns:nth-child(1) > p').html(config_intro.sex);
+$('.bi-lns:nth-child(2) > p').html(config_intro.birth);
+$('.bi-lns:nth-child(3) > p').html(config_intro.hobby);
+$('.bi-lns:nth-child(4) > p').html(config_intro.location);
+$('.bi-lns:nth-child(5) > p').html(config_intro.more);
 
 //
 const e_intros_p = $('.intros p');
+const e_intros_loading = $('.intros mdui-linear-progress');
 const e_intros_fab = $('.intros mdui-fab');
 const e_sens = $('.sens');
+const e_sens_loading = $('.sens mdui-linear-progress');
 const e_sens_p = $('.sens p');
 const e_sens_fab = $('.sens mdui-fab');
 const e_sens_h6 = $('.sens h6');
 
-function show_intros(){
-    let intros = config_intro.detail_intros;
-    let random_intros = intros[Math.floor(Math.random() * intros.length)];
-    if(random_intros === e_intros_p.text()){
-        show_intros();
-        return;
-    };
-    e_intros_p.text(random_intros);
-    if(/[\n\r]/.test(random_intros)){
-        e_intros_p.css('text-align', 'left')
-    } else {
-        e_intros_p.css('text-align', 'center')
-    };
+function show_intros(skip=false){
+    is_intro_in_cd = true;
+    e_intros_fab.prop('disabled', true);
+    e_intros_p.hide();
+    e_intros_loading.show();
+    setTimeout(()=>{ 
+        let intros = config_intro.detail_intros;
+        let random_intros = intros[Math.floor(Math.random() * intros.length)];
+        if(random_intros === e_intros_p.text()){
+            show_intros(true);
+            return;
+        };
+        e_intros_p.text(random_intros);
+        if(/[\n\r]/.test(random_intros)){
+            e_intros_p.css('text-align', 'left')
+        } else {
+            e_intros_p.css('text-align', 'center')
+        };
+        is_intro_in_cd = false;
+        e_intros_fab.prop('disabled', false);
+        e_intros_p.show();
+        e_intros_loading.hide();
+    }, skip ? 1 : (typeof config_intro.intros_wait === 'number' ? config_intro.intros_wait : eval(config_intro.intros_wait)));
 };
-function show_sens(){
+function show_sens(skip=false){
     if(config_intro.sentences){
         let probablity = 0;
         if(config_intro.hitokoto){
             probablity = config_intro.hitokoto;
         };
+        is_sens_in_cd = true;
+        e_sens_fab.prop('disabled', true);
+        e_sens_p.hide();
+        e_sens_h6.hide();
+        e_sens_loading.show();
         if(Math.random() < probablity){
-            e_sens_p.text('Requesting...');
+            function after_action(){
+                if(is_ready[0] === false || is_ready[1] === false){return;};
+                is_sens_in_cd = false;
+                e_sens_fab.prop('disabled', false);
+                e_sens_p.show();
+                e_sens_h6.show();
+                e_sens_loading.hide();
+            };
+            var is_ready = [false, false];
             e_sens_h6.text('');
-            e_sens_fab.prop('disabled', true);
             fetch('https://v1.hitokoto.cn/').then((response: Response) => {
                 response.json().then((data: any)=>{
                     let hitokoto = data.hitokoto;
@@ -86,39 +110,57 @@ function show_sens(){
                     let from = data.from + (data.from_who ? ', ' + data.from_who: '');
                     e_sens_p.text(hitokoto);
                     e_sens_h6.text(`From ${from} via Hitokoto (ID: ${id})`);
-                    e_sens_fab.prop('disabled', false);
+                    is_ready[0] = true;
+                    after_action();
                 }).catch((error: any)=>{
                     console.error(error);
                     e_sens_p.text(error.message);
                     e_sens_fab.prop('disabled', false);
-                    return;
+                    is_ready = [true, true];
+                    after_action();
                 });
             });
+            setTimeout(()=>{
+                is_ready[1] = true;
+                after_action();
+            }, skip ? true : typeof config_intro.sentence_wait === 'number' ? config_intro.sentence_wait : eval(config_intro.sentence_wait));
         } else {
             let sens = config_intro.sentences;
-            let random_sens = sens[Math.floor(Math.random() * sens.length)];
-            if(random_sens.text === e_sens_p.text()){
-                show_sens();
-                return;
-            };
-            e_sens_p.text(random_sens.text);
-            if(random_sens.note){
-                e_sens_h6.text(random_sens.note);
-            } else {
-                e_sens_h6.text('');
-            };
-            if(/[\n\r]/.test(random_sens.text)){
-                e_sens_p.css('text-align', 'left')
-            } else {
-                e_sens_p.css('text-align', 'center')
-            };
+            setTimeout(()=>{
+                let random_sens = sens[Math.floor(Math.random() * sens.length)];
+                if(random_sens.text === e_sens_p.text()){
+                    show_sens(true);
+                    return;
+                };
+                e_sens_p.text(random_sens.text);
+                if(random_sens.note){
+                    e_sens_h6.text(random_sens.note);
+                } else {
+                    e_sens_h6.text('');
+                };
+                if(/[\n\r]/.test(random_sens.text)){
+                    e_sens_p.css('text-align', 'left')
+                } else {
+                    e_sens_p.css('text-align', 'center')
+                };
+                is_sens_in_cd = false;
+                e_sens_fab.prop('disabled', false);
+                e_sens_p.show();
+                e_sens_h6.show();
+                e_sens_loading.hide();
+            }, skip ? 1 : (typeof config_intro.sentence_wait === 'number' ? config_intro.sentence_wait : eval(config_intro.sentence_wait)));
         };
     } else {
         e_sens.hide();
     };
 };
-e_intros_fab.on('click', show_intros);
-e_sens_fab.on('click', show_sens);
+
+e_intros_loading.hide();
+e_sens_loading.hide();
+var is_intro_in_cd = false;
+var is_sens_in_cd = false;
+e_intros_fab.on('click', ()=>{if(is_intro_in_cd){return;};show_intros();});
+e_sens_fab.on('click', ()=>{if(is_sens_in_cd){return;};show_sens();});
 show_intros();
 show_sens();
 

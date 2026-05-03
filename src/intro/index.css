@@ -10,26 +10,46 @@ body{
     width: 75%;
     gap: 24px;
 }
-.boxes{
-    width: 75%;
-    margin: 0 auto;
-}
 @media screen and (max-width: 768px) {
     .container{
         width: 100%;
     }
 }
-.boxes :is(.v-box, .h-box){
-    align-items: normal;
-    gap: 10px;
-    flex: 1;
+.basic-info{
+    justify-content: space-between;
+    gap: 10vw;
+    display: flex;
+    align-items: stretch;
+    padding: 0 20px;
 }
-.boxes :is(.v-box, .h-box) > mdui-card{
-    padding: 10px;
+.basic-info > .v-box:nth-child(1){
+    align-items: flex-start;
+}
+.basic-info > .v-box:nth-child(1) > *:not(mdui-avatar){
+    padding-left: 10px;
+}
+.basic-info > .v-box:nth-child(2){
+    align-items: flex-end;
+    text-align: right;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+}
+.basic-info > .v-box:nth-child(2) > div{
+    align-items: flex-end;
+    text-align: right;
+}
+.basic-info *{
+    margin: 2px 0;
+}
+.bi-lns {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1;
+    gap: 5px;
+}
+.bi-lns > :nth-child(2){
+    min-width: 24px;
+    min-height: 24px;
 }
 
 .intros, .sens{
@@ -66,6 +86,9 @@ body{
     color: var(--mdui-color-outline);
     font-weight: 300;
     opacity: 0.5;
+}
+mdui-linear-progress{ 
+    margin: 10px 0;
 }
 
 mdui-top-app-bar-title, .intros h3, .sens h3, .lifelog-title, .lifelog-cards h3{
