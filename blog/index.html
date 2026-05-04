@@ -8,13 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/svg+xml" href="../assets/icon-BxuRo8Du.svg" />
     <meta name="robots" content="index, follow">
-  <script type="module" crossorigin src="../assets/blog/index-0sixm1gm.js"></script>
-  <link rel="modulepreload" crossorigin href="../assets/global-R8TqVzZ4.js">
+  <script type="module" crossorigin src="../assets/blog/index-CaX4fLQG.js"></script>
+  <link rel="modulepreload" crossorigin href="../assets/global-CQkvbTr6.js">
   <link rel="modulepreload" crossorigin href="../assets/modulepreload-polyfill-CXK8biUa.js">
-  <link rel="modulepreload" crossorigin href="../assets/access-time-oPsA8KWs.js">
-  <link rel="modulepreload" crossorigin href="../assets/arrow-back-C-5qLxuX.js">
-  <link rel="modulepreload" crossorigin href="../assets/shuffle-BkVF1mv-.js">
-  <link rel="stylesheet" crossorigin href="../assets/index-Cy25gHiO.css">
+  <link rel="modulepreload" crossorigin href="../assets/access-time-BHOMcmKG.js">
+  <link rel="modulepreload" crossorigin href="../assets/shuffle-DuSyD7vQ.js">
+  <link rel="stylesheet" crossorigin href="../assets/index-BrN4uGei.css">
 
 <meta name="description" content="Read my blog posts.">
 <meta property="og:description" content="Read my blog posts.">
@@ -25,9 +24,9 @@
 </head>
 <body>
     <mdui-top-app-bar scroll-behavior="elevate">
-        <mdui-button-icon href="..">
-            <mdui-icon-arrow-back></mdui-icon-arrow-back>
-        </mdui-button-icon>
+        <mdui-button-icon class="sidebar-open-btn">
+                <mdui-icon-menu></mdui-icon-menu>
+            </mdui-button-icon>
         <mdui-top-app-bar-title><!----></mdui-top-app-bar-title>
         <div style="flex-grow: 1"></div>
         <mdui-tooltip content="" placement="left">
@@ -36,6 +35,50 @@
             </mdui-button-icon>
         </mdui-tooltip>
     </mdui-top-app-bar>
+
+    <mdui-navigation-drawer modal close-on-overlay-click close-on-esc class="sidebar">
+        <div class="v-box">
+            <mdui-list>
+                <mdui-list-item nonclickable>
+                    <div slot="description" class="h-box">
+                        <mdui-avatar></mdui-avatar>
+                        <span><!----></span>
+                    </div>
+                </mdui-list-item>
+                <mdui-list-item rounded href="../">
+                    <mdui-icon-home slot="icon"></mdui-icon-home>
+                    <span><!----></span>
+                </mdui-list-item>
+                <mdui-list-item rounded href="../intro/">
+                    <mdui-icon-badge slot="icon"></mdui-icon-badge>
+                    <span><!----></span>
+                </mdui-list-item>
+                <mdui-list-item rounded href="../links/">
+                    <mdui-icon-link slot="icon"></mdui-icon-link>
+                    <span><!----></span>
+                </mdui-list-item>
+                <mdui-list-item rounded active>
+                    <mdui-icon-article slot="icon"></mdui-icon-article>
+                    <span><!----></span>
+                </mdui-list-item>
+            </mdui-list>
+            <div class="v-box">
+                <div class="h-box glb-ctrl">
+                    <mdui-tooltip content="">
+                        <mdui-button-icon><mdui-icon-light></mdui-icon-light></mdui-button-icon>
+                    </mdui-tooltip>
+                    <mdui-tooltip content="">
+                        <mdui-button-icon><mdui-icon-translate></mdui-icon-translate></mdui-button-icon>
+                    </mdui-tooltip>
+                    <mdui-tooltip content="">
+                        <mdui-button-icon><mdui-icon-wallpaper></mdui-icon-wallpaper></mdui-button-icon>
+                    </mdui-tooltip>
+                </div>
+                <p class="footer"><!----></p>
+            </div>
+        </div>
+    </mdui-navigation-drawer>
+
     <div class="v-box container">
         <h1><!----></h1>
         <p><!----></p>
