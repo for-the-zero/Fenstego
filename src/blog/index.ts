@@ -16,7 +16,6 @@ import 'mdui/components/list-item.js';
 import 'mdui/components/badge.js';
 import 'mdui/components/switch.js';
 // icons
-import '@mdui/icons/arrow-back.js';
 import '@mdui/icons/tag.js';
 import '@mdui/icons/category--outlined.js';
 import '@mdui/icons/search.js';

@@ -13,7 +13,6 @@ import 'mdui/components/collapse.js'
 import 'mdui/components/collapse-item.js';
 import 'mdui/components/linear-progress.js';
 // icons
-import '@mdui/icons/arrow-back.js';
 import '@mdui/icons/shuffle.js';
 import '@mdui/icons/history.js';
 import '@mdui/icons/battery-0-bar.js';

@@ -1,17 +1,75 @@
 zh-CN: # 语言: 中文
   translations: 
-    - selector: 'mdui-avatar'
-      target: 'src'
-      text: '' # 主页上头像的图片地址
-    - selector: '.basic-info > .v-box > mdui-avatar'
-      target: 'src'
-      text: '' # 介绍页头像的图片地址
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(1) > div > span'
+      target: 'inner-html'
+      text: 'Revealry Demo' # 侧边栏的标题
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(2) > span'
+      target: 'inner-html'
+      text: '首页' # 侧边栏首页按钮
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(3) > span'
+      target: 'inner-html'
+      text: '介绍' # 侧边栏介绍按钮
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(4) > span'
+      target: 'inner-html'
+      text: '链接' # 侧边栏链接按钮
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(5) > span'
+      target: 'inner-html'
+      text: '博客' # 侧边栏博客按钮
+    - selector: '.glb-ctrl > mdui-tooltip:nth-child(2)'
+      target: 'content'
+      text: 'Switch to English' # 侧边栏切换语言按钮
+    - selector: '.glb-ctrl > mdui-tooltip:nth-child(3)'
+      target: 'content'
+      text: '开关背景图' # 侧边栏背景图按钮
+    - selector: '.footer'
+      target: 'inner-html'
+      text: 'Footer' # 侧边栏页脚
+  _other:
+    daynight: # 暗黑模式切换按钮的提示文本和切换后的提示消息
+      auto:
+        tooltip: 切换至自动
+        notice: 已切换至自动
+      light:
+        tooltip: 切换至浅色模式
+        notice: 已切换至浅色模式
+      dark:
+        tooltip: 切换至深色模式
+        notice: 已切换至深色模式
 
 en: # Language: English
   translations: 
-    - selector: 'mdui-avatar'
-      target: 'src'
-      text: '' # Homepage avatar image address
-    - selector: '.basic-info > .v-box > mdui-avatar'
-      target: 'src'
-      text: '' # About page avatar image address
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(1) > div > span'
+      target: 'inner-html'
+      text: 'Revealry Demo' # Sidebar title
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(2) > span'
+      target: 'inner-html'
+      text: 'Home' # Sidebar home button
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(3) > span'
+      target: 'inner-html'
+      text: 'About' # Sidebar about button
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(4) > span'
+      target: 'inner-html'
+      text: 'Links' # Sidebar links button
+    - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(5) > span'
+      target: 'inner-html'
+      text: 'Blog' # Sidebar blog button
+    - selector: '.glb-ctrl > mdui-tooltip:nth-child(2)'
+      target: 'content'
+      text: '切换为中文' # Sidebar switch language button
+    - selector: '.glb-ctrl > mdui-tooltip:nth-child(3)'
+      target: 'content'
+      text: 'Toggle Background Image' # Sidebar background image button
+    - selector: '.footer'
+      target: 'inner-html'
+      text: 'Footer' # Sidebar footer
+  _other:
+    daynight: # Tooltip text for dark mode toggle button and notice message after toggling
+      auto:
+        tooltip: Switch to Auto
+        notice: Switched to Auto
+      light:
+        tooltip: Switch to Light Mode
+        notice: Switched to Light Mode
+      dark:
+        tooltip: Switch to Dark Mode
+        notice: Switched to Dark Mode

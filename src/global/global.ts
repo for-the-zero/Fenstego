@@ -1,5 +1,6 @@
-import { init_cursor } from './components';
+import { init_cursor, init_sb } from './components';
 init_cursor();
+init_sb();
 
 import { init_i18n } from './i18n';
 import config_static_global from '../../configs/global.static.yaml';

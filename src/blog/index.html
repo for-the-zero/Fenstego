@@ -12,9 +12,9 @@
 </head>
 <body>
     <mdui-top-app-bar scroll-behavior="elevate">
-        <mdui-button-icon href="..">
-            <mdui-icon-arrow-back></mdui-icon-arrow-back>
-        </mdui-button-icon>
+        <mdui-button-icon class="sidebar-open-btn">
+                <mdui-icon-menu></mdui-icon-menu>
+            </mdui-button-icon>
         <mdui-top-app-bar-title><!----></mdui-top-app-bar-title>
         <div style="flex-grow: 1"></div>
         <mdui-tooltip content="" placement="left">
@@ -23,6 +23,50 @@
             </mdui-button-icon>
         </mdui-tooltip>
     </mdui-top-app-bar>
+
+    <mdui-navigation-drawer modal close-on-overlay-click close-on-esc class="sidebar">
+        <div class="v-box">
+            <mdui-list>
+                <mdui-list-item nonclickable>
+                    <div slot="description" class="h-box">
+                        <mdui-avatar></mdui-avatar>
+                        <span><!----></span>
+                    </div>
+                </mdui-list-item>
+                <mdui-list-item rounded href="../">
+                    <mdui-icon-home slot="icon"></mdui-icon-home>
+                    <span><!----></span>
+                </mdui-list-item>
+                <mdui-list-item rounded href="../intro/">
+                    <mdui-icon-badge slot="icon"></mdui-icon-badge>
+                    <span><!----></span>
+                </mdui-list-item>
+                <mdui-list-item rounded href="../links/">
+                    <mdui-icon-link slot="icon"></mdui-icon-link>
+                    <span><!----></span>
+                </mdui-list-item>
+                <mdui-list-item rounded active>
+                    <mdui-icon-article slot="icon"></mdui-icon-article>
+                    <span><!----></span>
+                </mdui-list-item>
+            </mdui-list>
+            <div class="v-box">
+                <div class="h-box glb-ctrl">
+                    <mdui-tooltip content="">
+                        <mdui-button-icon><mdui-icon-light></mdui-icon-light></mdui-button-icon>
+                    </mdui-tooltip>
+                    <mdui-tooltip content="">
+                        <mdui-button-icon><mdui-icon-translate></mdui-icon-translate></mdui-button-icon>
+                    </mdui-tooltip>
+                    <mdui-tooltip content="">
+                        <mdui-button-icon><mdui-icon-wallpaper></mdui-icon-wallpaper></mdui-button-icon>
+                    </mdui-tooltip>
+                </div>
+                <p class="footer"><!----></p>
+            </div>
+        </div>
+    </mdui-navigation-drawer>
+
     <div class="v-box container">
         <h1><!----></h1>
         <p><!----></p>

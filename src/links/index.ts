@@ -11,7 +11,6 @@ import 'mdui/components/text-field.js';
 import 'mdui/components/tooltip.js';
 import 'mdui/components/button-icon.js';
 // icons
-import '@mdui/icons/arrow-back.js';
 import '@mdui/icons/content-copy.js';
 import '@mdui/icons/open-in-new.js';
 import '@mdui/icons/label.js';

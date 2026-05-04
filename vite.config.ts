@@ -12,7 +12,7 @@ import { viteExtendHead } from './scripts/plugin-head';
 import { viteRssFeed } from './scripts/plugin-rss';
 import { viteSeoArea } from './scripts/plugin-seo-area';
 import { viteServerUrlFix, viteCopyImagesPlugin } from './scripts/vite-server-url-fix';
-import { copyIntroAssets } from './scripts/plugin-copy-intro-assets';
+import { copyCaAssets } from './scripts/plugin-ca-copy';
 
 const configPath = path.resolve(__dirname, 'configs/config.yaml');
 const config = jsYaml.load(fs.readFileSync(configPath, 'utf8')) as any;
@@ -72,7 +72,7 @@ export default defineConfig({
   },
   base: './',
   plugins: [
-    copyIntroAssets(),
+    copyCaAssets(),
     viteServerUrlFix(),
     viteCopyImagesPlugin(),
     viteMeta(),

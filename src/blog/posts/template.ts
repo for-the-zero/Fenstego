@@ -21,7 +21,6 @@ import 'mdui/components/card.js';
 import 'mdui/components/tooltip.js';
 import 'mdui/components/circular-progress.js';
 // icons
-import '@mdui/icons/arrow-back.js';
 import '@mdui/icons/arrow-forward.js';
 import '@mdui/icons/menu-open.js';
 import '@mdui/icons/unfold-more.js';
@@ -29,7 +28,6 @@ import '@mdui/icons/access-time.js';
 import '@mdui/icons/tag.js';
 import '@mdui/icons/category--outlined.js';
 import '@mdui/icons/description--outlined.js';
-import '@mdui/icons/home.js';
 import '@mdui/icons/shuffle.js';
 import '@mdui/icons/image.js';
 
@@ -40,7 +38,7 @@ init_i18n(config_static_blog);
 const lang = get_lang();
 
 //
-const e_drawer = $('mdui-navigation-drawer');
+const e_drawer = $('aside > mdui-navigation-drawer');
 const e_drawer_btn = $('.open-content-drawer');
 e_drawer_btn.on('click', ()=>{
     e_drawer.attr('open','');
