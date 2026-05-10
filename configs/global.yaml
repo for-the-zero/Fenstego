@@ -1,3 +1,19 @@
-# color: 全局主题颜色。
-# color: Global theme color.
+# 全局主题颜色 / Global theme color
 color: '#00FFFF'
+# 全局背景图片 / Global background image
+bg:
+  defaultly_on: true # 是否默认开启 / Whether to turn on by default
+  opacity: 0.25 # 透明度 / Opacity
+  pics:
+    # day: 亮色模式/Light mode | night: 暗色模式/Dark mode | narrow: 窄屏/Narrow screen | wide: 宽屏/Wide screen
+    # 支持config/bg目录下的图片和url / Support images in the config/bg directory and urls
+    day_narrow:
+      - 'dn.png'
+      - 'https://placehold.co/1080x1920'
+    day_wide:
+      - 'dw1.png'
+      - 'dw2.png'
+    night_narrow:
+      - 'nn.png'
+    night_wide:
+      - 'nw.png'

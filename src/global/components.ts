@@ -21,6 +21,7 @@ import '@mdui/icons/forum.js';
 import $ from 'jquery';
 import { get_lang, change_lang } from './i18n';
 import { get_dnmode, switch_dnmode } from '../global/dn_mode';
+import { change_bg_mode } from './bg';
 import config_static_global from '../../configs/global.static.yaml';
 const lang = get_lang();
 export function init_sb(){
@@ -45,9 +46,7 @@ e_dn_btn.on('click', ()=>{
     });
 });
 $('.glb-ctrl > mdui-tooltip:nth-child(2)').on('click',change_lang);
-$('.glb-ctrl > mdui-tooltip:nth-child(3)').on('click',()=>{
-    // TODO:
-});
+$('.glb-ctrl > mdui-tooltip:nth-child(3)').on('click',change_bg_mode);
 
 //
 import { assets_path } from './assets_path';

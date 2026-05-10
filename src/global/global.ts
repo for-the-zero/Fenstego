@@ -12,3 +12,6 @@ setColorScheme(config_contents_global.color);
 
 import { init_dnmode } from './dn_mode';
 init_dnmode();
+
+import { init_bg } from './bg';
+init_bg();

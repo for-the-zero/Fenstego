@@ -7,7 +7,7 @@
     src: url("../assets/WantedSansStdVariable.woff2") format("woff2-variations");
 }
 body{
-    background-color: rgb(var(--mdui-color-surface));
+    /* background-color: rgb(var(--mdui-color-surface)); */
     font-family: 'Wanted Sans Std Variable', 'Noto Sans SC';
     color: rgb(var(--mdui-color-on-surface));
     display: flex;
@@ -126,12 +126,20 @@ mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item[nonclickable] 
     color: rgb(var(--mdui-color-outline));
 }
 
-.bg {
-    position: absolute;
+.bg-container {
+    position: fixed;
     inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(var(--mdui-color-surface));
+    z-index: -114514;
+}
+.bg {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
     -webkit-user-drag: none;
     user-select: none;
+    transition: opacity 0.5s;
+    background-color: rgb(var(--mdui-color-surface));
 }

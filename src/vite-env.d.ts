@@ -89,3 +89,17 @@ interface toc_item {
     slug: string;
     children: toc_item[] | null;
 };
+
+interface global{
+    color: string;
+    bg: {
+        defaultly_on: boolean;
+        opacity: number;
+        pics:{
+            day_narrow: string[];
+            day_wide: string[];
+            night_narrow: string[];
+            night_wide: string[];
+        }
+    }
+}
