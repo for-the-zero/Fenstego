@@ -1,0 +1,60 @@
+@import url(../global/global.css);
+
+.body{
+    justify-content: space-between;
+}
+.glb-ctrl{
+    padding: 2.5px;
+    margin: 0;
+}
+.footer{
+    padding: 7.5px;
+}
+.tops{
+    align-items: flex-start;
+    gap: 5px;
+    padding: 7.5px;
+    width: 100vw;
+    box-sizing: border-box;
+}
+.tops > mdui-card:nth-child(1){ 
+    justify-content: flex-start;
+    gap: 10px;
+    min-height: calc(2.5rem + 10px);
+    padding: 10px;
+    max-width: 100%;
+    overflow-x: auto;
+    min-width: var(--tops-min-width, 0);
+}
+.tops > mdui-card:nth-child(2){
+    min-width: var(--tops-min-width, 0);
+}
+.tops > mdui-card:nth-child(1)::-webkit-scrollbar{ 
+    display: none;
+}
+.tops > mdui-card:nth-child(1) > span{
+    font-size: 25px;
+}
+.bottoms{
+    align-items: flex-end;
+    gap: 5px;
+    padding: 7.5px;
+    width: 100vw;
+    box-sizing: border-box;
+}
+.bottoms > mdui-card:nth-child(1){
+    padding: 10px;
+    gap: 7.5px;
+}
+
+body > h1{
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    max-width: 90vw;
+    text-shadow: 0 0 5px rgb(var(--mdui-color-surface));
+    font-weight: 500;
+    font-size: 2.5rem;
+}

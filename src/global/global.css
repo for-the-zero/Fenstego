@@ -125,3 +125,13 @@ mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item[nonclickable] 
     font-size: 14px;
     color: rgb(var(--mdui-color-outline));
 }
+
+.bg {
+    position: absolute;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    -webkit-user-drag: none;
+    user-select: none;
+}

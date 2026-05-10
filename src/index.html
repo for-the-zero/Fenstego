@@ -7,83 +7,41 @@
         <title>Loading...</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="./index.css" />
+        <link rel="stylesheet" href="./home/index.css" />
         <meta name="robots" content="index, follow">
-        
     </head>
-    <body>
-        <mdui-card class="welcome-card" variant="outlined" clickable><!----></mdui-card>
-        <div class="h-box" style="
-            width: calc(100% - 20px - 36px);
-            margin-top: 20px;
-            margin-bottom: 20px;"
-        >   
-            <mdui-avatar src="" style="margin-right: 10px;"></mdui-avatar>
-            <p class="welcome-subt"><!----></p>
-            <div style="flex-grow: 1;"></div>
-            <mdui-tooltip class="switch-daynight" content="" placement="left" style="margin-right: 10px;">
-                <mdui-button-icon>
-                    <mdui-icon-light></mdui-icon-light>
-                </mdui-button-icon>
-            </mdui-tooltip>
-            <mdui-tooltip class="switch-lang" content="" placement="left">
-                <mdui-button-icon>
-                    <mdui-icon-translate></mdui-icon-translate>
-                </mdui-button-icon>
-            </mdui-tooltip>
+    <body class="v-box body">
+        <img class="bg" src="https://placehold.co/1920x1080" style="opacity: 0.2;" />
+
+        <h1><!----></h1>
+        <div class="v-box tops">
+            <mdui-card variant="outlined" class="h-box">
+                <mdui-avatar></mdui-avatar>
+                <span><!----></span>
+            </mdui-card>
+            <mdui-card variant="outlined" class="h-box glb-ctrl">
+                <mdui-tooltip content="" placement="bottom-start">
+                    <mdui-button-icon><mdui-icon-light></mdui-icon-light></mdui-button-icon>
+                </mdui-tooltip>
+                <mdui-tooltip content="" placement="bottom-start">
+                    <mdui-button-icon><mdui-icon-translate></mdui-icon-translate></mdui-button-icon>
+                </mdui-tooltip>
+                <mdui-tooltip content="" placement="bottom-start">
+                    <mdui-button-icon><mdui-icon-wallpaper></mdui-icon-wallpaper></mdui-button-icon>
+                </mdui-tooltip>
+                <div></div>
+            </mdui-card>
         </div>
-
-        <div class="v-box" style="
-            width: calc(100% - 20px - 36px);
-            padding-left: 20px;
-            padding-right: 20px;
-            box-sizing: border-box;
-            gap: 20px;
-        ">
-            <div class="h-box index" style="width: 100%;">
-                <mdui-card variant="filled" clickable class="auto-box link-card" href="./intro/">
-                    <div class="auto-box link-card-content">
-                        <mdui-icon-badge--outlined class="index-icons"></mdui-icon-badge--outlined>
-                        <h2><!----></h2>
-                    </div>
-                </mdui-card>
-                <div>
-                    <p><!----></p>
-                </div>
-            </div>
-            <div class="h-box index" style="width: 100%;">
-                <mdui-card variant="filled" clickable class="auto-box link-card" href="./links/">
-                    <div class="auto-box link-card-content">
-                        <mdui-icon-connect-without-contact class="index-icons"></mdui-icon-connect-without-contact>
-                        <h2><!----></h2>
-                    </div>
-                </mdui-card>
-                <div>
-                    <p><!----></p>
-                </div>
-            </div>
-            <div class="h-box index" style="width: 100%;">
-                <mdui-card variant="filled" clickable class="auto-box link-card" href="./blog/">
-                    <div class="auto-box link-card-content">
-                        <mdui-icon-feed--outlined class="index-icons"></mdui-icon-feed--outlined>
-                        <h2><!----></h2>
-                    </div>
-                </mdui-card>
-                <div>
-                    <p><!----></p>
-                </div>
-            </div>
+        <div class="v-box bottoms">
+            <mdui-card variant="outlined" class="h-box"> 
+                <mdui-button href="./intro/" variant="filled"><mdui-icon-badge slot="icon"></mdui-icon-badge><span><!----></span></mdui-button>
+                <mdui-button href="./links/" variant="filled"><mdui-icon-link slot="icon"></mdui-icon-link><span><!----></span></mdui-button>
+                <mdui-button href="./blog/" variant="filled"><mdui-icon-article slot="icon"></mdui-icon-article><span><!----></span></mdui-button>
+            </mdui-card>
+            <mdui-card variant="outlined" class="footer"></mdui-card>
         </div>
-
-        <mdui-divider style="
-            width: calc(100% - 20px - 36px);
-            margin-top: 20px;
-            margin-bottom: 10px;
-        "></mdui-divider>
-
-        <div class="mdui-prose footer" style="margin-bottom: 10px;"><!----></div>
 
         <script type="module" src="./global/global.ts"></script>
-        <script type="module" src="./index.ts"></script>
+        <script type="module" src="./home/index.ts"></script>
     </body>
 </html>

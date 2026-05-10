@@ -23,6 +23,6 @@
 - src：源代码
 - - assets
 - - home、blog、intro、links、global
-- - index.html/css/ts、404.html/css/ts
+- - index.html、404.html/css/ts
 - - vercel.json
 - - vite-env.d.ts：所有的类型存放于此

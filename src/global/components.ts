@@ -49,6 +49,10 @@ $('.glb-ctrl > mdui-tooltip:nth-child(3)').on('click',()=>{
     // TODO:
 });
 
+//
+import { assets_path } from './assets_path';
+$('mdui-avatar').prop('src', assets_path + 'avatar.png');
+
 
 //
 const is_mobile = /Mobi|Android|webOS|iPhone|iPad/i.test(navigator.userAgent);
