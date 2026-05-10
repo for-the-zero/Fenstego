@@ -16,6 +16,36 @@ function runCopy(srcDir: string, outDir: string) {
     });
 };
 
+function findFile(fileName: string) {
+    const configPath = path.resolve(rootDir, 'configs', fileName);
+    if (fs.existsSync(configPath) && fs.statSync(configPath).isFile()) {
+        return configPath;
+    };
+    const srcPath = path.resolve(rootDir, 'src/assets', fileName);
+    if (fs.existsSync(srcPath) && fs.statSync(srcPath).isFile()) {
+        return srcPath;
+    };
+    return null;
+};
+
+function copySingleFile(srcFile: string, outFile: string) {
+    if (!fs.existsSync(srcFile)) {
+        return;
+    };
+    const outDir = path.dirname(outFile);
+    if (!fs.existsSync(outDir)) {
+        fs.mkdirSync(outDir, { recursive: true });
+    };
+    fs.copyFileSync(srcFile, outFile);
+};
+
+function copyOrFallback(fileName: string, outPath: string) {
+    const srcFile = findFile(fileName);
+    if (srcFile) {
+        copySingleFile(srcFile, outPath);
+    };
+};
+
 export function copyCaAssets() {
     return {
         name: 'copy-ca-copy',
@@ -44,12 +74,39 @@ export function copyCaAssets() {
                         return;
                     };
                 };
+                if (url === '/README.md') {
+                    const filePath = findFile('README.md');
+                    if (filePath) {
+                        res.setHeader('Content-Type', 'text/markdown');
+                        res.end(fs.readFileSync(filePath));
+                        return;
+                    };
+                };
+                if (url === '/assets/avatar.png') {
+                    const filePath = findFile('avatar.png');
+                    if (filePath) {
+                        res.setHeader('Content-Type', 'image/png');
+                        res.end(fs.readFileSync(filePath));
+                        return;
+                    };
+                };
+                if (url === '/assets/icon.svg') {
+                    const filePath = findFile('icon.svg');
+                    if (filePath) {
+                        res.setHeader('Content-Type', 'image/svg+xml');
+                        res.end(fs.readFileSync(filePath));
+                        return;
+                    };
+                };
                 next();
             });
         },
         closeBundle: () => {
             runCopy(path.resolve(rootDir, 'configs/intro'), path.resolve(rootDir, 'dist/assets/intro'));
             runCopy(path.resolve(rootDir, 'configs/bg'), path.resolve(rootDir, 'dist/assets/bg'));
+            copyOrFallback('README.md', path.resolve(rootDir, 'dist/README.md'));
+            copyOrFallback('avatar.png', path.resolve(rootDir, 'dist/assets/avatar.png'));
+            copyOrFallback('icon.svg', path.resolve(rootDir, 'dist/assets/icon.svg'));
         }
     };
 };

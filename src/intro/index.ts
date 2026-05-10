@@ -24,6 +24,8 @@ import '@mdui/icons/wc.js';
 import '@mdui/icons/cake--outlined.js';
 import '@mdui/icons/favorite-border.js';
 import '@mdui/icons/more-horiz.js';
+import '@mdui/icons/male.js';
+import '@mdui/icons/female.js';
 
 //
 import { init_i18n, get_lang } from '../global/i18n';
@@ -102,6 +104,10 @@ function show_sens(skip=false){
             };
             var is_ready = [false, false];
             e_sens_h6.text('');
+            let wait_timeout = setTimeout(()=>{
+                is_ready[1] = true;
+                after_action();
+            }, skip ? true : typeof config_intro.sentence_wait === 'number' ? config_intro.sentence_wait : eval(config_intro.sentence_wait));
             fetch('https://v1.hitokoto.cn/').then((response: Response) => {
                 response.json().then((data: any)=>{
                     let hitokoto = data.hitokoto;
@@ -116,13 +122,10 @@ function show_sens(skip=false){
                     e_sens_p.text(error.message);
                     e_sens_fab.prop('disabled', false);
                     is_ready = [true, true];
+                    clearTimeout(wait_timeout);
                     after_action();
                 });
             });
-            setTimeout(()=>{
-                is_ready[1] = true;
-                after_action();
-            }, skip ? true : typeof config_intro.sentence_wait === 'number' ? config_intro.sentence_wait : eval(config_intro.sentence_wait));
         } else {
             let sens = config_intro.sentences;
             setTimeout(()=>{

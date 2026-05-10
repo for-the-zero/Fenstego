@@ -43,6 +43,14 @@ zh-CN: # 语言: 中文
     target: inner-html
     text: 电量 # “手机”历史数据表格的表头“电量”列
 
+  # 将性别图标替换为男或女图标
+  # - selector: 'mdui-icon-wc'
+  #   target: 'replace'
+  #   text: '<mdui-icon-male style="color: rgb(var(--mdui-color-outline));"></mdui-icon-male>'
+  # - selector: 'mdui-icon-wc'
+  #   target: 'replace'
+  #   text: '<mdui-icon-female style="color: rgb(var(--mdui-color-outline));"></mdui-icon-female>'
+
   _other:
     title: 介绍 | Revealry 示例 # 设置浏览器标签页中显示的页面标题
 
@@ -90,6 +98,14 @@ en: # Language: English
   - selector: '.lifelog-card-phone-table > thead > tr > th:last-child'
     target: inner-html
     text: Battery # The header for the "Battery" column in the mobile phone historical data table
+
+  # Replace gender icons with male or female icons
+  # - selector: 'mdui-icon-wc'
+  #   target: 'replace'
+  #   text: '<mdui-icon-male style="color: rgb(var(--mdui-color-outline));"></mdui-icon-male>'
+  # - selector: 'mdui-icon-wc'
+  #   target: 'replace'
+  #   text: '<mdui-icon-female style="color: rgb(var(--mdui-color-outline));"></mdui-icon-female>'
 
   _other:
     title: Intro | Revealry Demo # Sets the page title displayed in the browser tab

@@ -24,6 +24,17 @@ zh-CN: # 语言: 中文
     - selector: '.footer'
       target: 'inner-html'
       text: 'Footer' # 侧边栏页脚
+    # 附加一些按钮
+    # - selector: '.glb-ctrl > div'
+    #   target: 'replace'
+    #   text: |
+    #     <mdui-tooltip content="论坛">
+    #         <mdui-button-icon href="#"><mdui-icon-forum></mdui-icon-forum></mdui-button-icon>
+    #     </mdui-tooltip>
+    #     <mdui-tooltip content="开往">
+    #         <mdui-button-icon href="#"><mdui-icon-train></mdui-icon-train></mdui-button-icon>
+    #     </mdui-tooltip>
+
   _other:
     daynight: # 暗黑模式切换按钮的提示文本和切换后的提示消息
       auto:
@@ -62,6 +73,16 @@ en: # Language: English
     - selector: '.footer'
       target: 'inner-html'
       text: 'Footer' # Sidebar footer
+    # Add some buttons
+    # - selector: '.glb-ctrl > div'
+    #   target: 'replace'
+    #   text: |
+    #     <mdui-tooltip content="Forum">
+    #         <mdui-button-icon href="#"><mdui-icon-forum></mdui-icon-forum></mdui-button-icon>
+    #     </mdui-tooltip>
+    #     <mdui-tooltip content="Travelings">
+    #         <mdui-button-icon href="#"><mdui-icon-train></mdui-icon-train></mdui-button-icon>
+    #     </mdui-tooltip>
   _other:
     daynight: # Tooltip text for dark mode toggle button and notice message after toggling
       auto:

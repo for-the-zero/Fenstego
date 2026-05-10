@@ -15,6 +15,8 @@ import '@mdui/icons/home.js';
 import '@mdui/icons/badge.js';
 import '@mdui/icons/link.js';
 import '@mdui/icons/article.js';
+import '@mdui/icons/train.js';
+import '@mdui/icons/forum.js';
 //
 import $ from 'jquery';
 import { get_lang, change_lang } from './i18n';

@@ -21,6 +21,7 @@ import 'mdui/components/card.js';
 import 'mdui/components/tooltip.js';
 import 'mdui/components/circular-progress.js';
 // icons
+import '@mdui/icons/arrow-back.js';
 import '@mdui/icons/arrow-forward.js';
 import '@mdui/icons/menu-open.js';
 import '@mdui/icons/unfold-more.js';

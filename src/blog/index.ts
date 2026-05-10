@@ -227,7 +227,7 @@ function show_posts(){
         e_blog_posts.removeClass('posts');
         e_blog_posts.append($('<mdui-list></mdui-list>').append(
             filtered_posts.map((post: blog_post)=>`
-                <mdui-tooltip content="${post.desc}">
+                ${post.desc ? `<mdui-tooltip content="${post.desc}">` : ''}
                     <mdui-list-item href="${post.filename ? `./posts/${post.filename}/` : post.href}">
                         <div class="h-box post-list-subt">
                             <span>${post.date}</span>
@@ -235,7 +235,7 @@ function show_posts(){
                         </div>
                         <h2>${post.title}</h2>
                     </mdui-list-item>
-                </mdui-tooltip>
+                ${post.desc ? `</mdui-tooltip>` : ''}
             `).join(''))
         );
     };
