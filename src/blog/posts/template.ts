@@ -13,13 +13,13 @@ import 'mdui/components/list.js';
 import 'mdui/components/list-item.js';
 import 'mdui/components/collapse.js';
 import 'mdui/components/collapse-item.js';
-import 'mdui/components/divider.js';
 import 'mdui/components/button-icon.js';
 import 'mdui/components/chip.js';
 import 'mdui/components/tooltip.js';
 import 'mdui/components/card.js';
 import 'mdui/components/tooltip.js';
 import 'mdui/components/circular-progress.js';
+import 'mdui/components/icon.js';
 // icons
 import '@mdui/icons/arrow-back.js';
 import '@mdui/icons/arrow-forward.js';
@@ -29,7 +29,6 @@ import '@mdui/icons/access-time.js';
 import '@mdui/icons/tag.js';
 import '@mdui/icons/category--outlined.js';
 import '@mdui/icons/description--outlined.js';
-import '@mdui/icons/shuffle.js';
 import '@mdui/icons/image.js';
 
 //

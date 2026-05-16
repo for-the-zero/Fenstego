@@ -4,15 +4,17 @@ import { add_dn_listener } from './dn_mode';
 import global_config from '../../configs/global.yaml';
 
 $('body').prepend(`
-    <div class="bg-container"> 
+    <div class="bg-container"${assets_path !== './assets/' ? ' style="margin-top: 4rem;"' : ''}> 
         <img class="bg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" />
     </div>
 `);
-const ele_bg = $('.bg');
+const e_bg = $('.bg');
 const bg = global_config.bg as global["bg"];
 var dn: 'day' | 'night';
 var nw: 'narrow' | 'wide' = (window.innerWidth / window.innerHeight) > 1 ? 'wide' : 'narrow';
 var bg_on = bg.defaultly_on;
+var retry = 0;
+var loader = new Image();
 
 add_dn_listener((newdn: 'day' | 'night') => {
     if(dn !== newdn){
@@ -27,13 +29,18 @@ window.addEventListener('resize',()=>{
         init_bg();
     };
 });
+if(localStorage.getItem('bg_switch')){
+    bg_on = localStorage.getItem('bg_switch') == '1';
+};
 export function change_bg_mode(){
     bg_on = !bg_on;
+    localStorage.setItem('bg_switch', bg_on ? '1' : '0');
     init_bg();
 };
 
 export function init_bg() {
-    ele_bg.css('opacity', 0);
+    e_bg.css('opacity', 0);
+    e_bg.css('filter', `blur(50px)`);
     if(!bg_on){
         return;
     };
@@ -49,16 +56,19 @@ export function init_bg() {
     if(!src.includes('://')){
         src = `${assets_path}bg/${src}`;
     };
-    ele_bg.prop('src', src);
-    ele_bg.css('opacity', assets_path === './assets/' ? 1 : bg.opacity);
+    loader.onload = () => {
+        retry = 0;
+        e_bg.prop('src', src);
+        e_bg.css('opacity', assets_path === './assets/' ? 1 : bg.opacity);
+        e_bg.css('filter', `blur(${assets_path === './assets/' ? '0' : bg.blur}px)`);
+    };
+    loader.src = src;
 };
-
-var retry = 0;
-ele_bg.on('error',()=>{
+loader.onerror = () => {
     if(!bg_on){return;};
     if(retry > 3){
         bg_on = false;
     };
     retry++;
     init_bg();
-});
+};

@@ -95,6 +95,7 @@ interface global{
     bg: {
         defaultly_on: boolean;
         opacity: number;
+        blur: number;
         pics:{
             day_narrow: string[];
             day_wide: string[];
@@ -102,4 +103,4 @@ interface global{
             night_wide: string[];
         }
     }
-}
+};

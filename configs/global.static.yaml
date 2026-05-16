@@ -28,11 +28,12 @@ zh-CN: # 语言: 中文
     # - selector: '.glb-ctrl > div'
     #   target: 'replace'
     #   text: |
+    #     <mdui-divider vertical style="height: 30px;"></mdui-divider>
     #     <mdui-tooltip content="论坛">
-    #         <mdui-button-icon href="#"><mdui-icon-forum></mdui-icon-forum></mdui-button-icon>
+    #         <mdui-button-icon href="#" target="_blank"><mdui-icon-forum></mdui-icon-forum></mdui-button-icon>
     #     </mdui-tooltip>
     #     <mdui-tooltip content="开往">
-    #         <mdui-button-icon href="#"><mdui-icon-train></mdui-icon-train></mdui-button-icon>
+    #         <mdui-button-icon href="https://www.travellings.cn/go.html" target="_blank"><mdui-icon-train></mdui-icon-train></mdui-button-icon>
     #     </mdui-tooltip>
 
   _other:
@@ -46,6 +47,7 @@ zh-CN: # 语言: 中文
       dark:
         tooltip: 切换至深色模式
         notice: 已切换至深色模式
+    # eval: '// 在大部分代码执行前执行，所有.static.yaml都支持'
 
 en: # Language: English
   translations: 
@@ -94,3 +96,4 @@ en: # Language: English
       dark:
         tooltip: Switch to Dark Mode
         notice: Switched to Dark Mode
+    eval: '// Execute before most of the code, support in all .static.yaml'

@@ -4,6 +4,7 @@ color: '#00FFFF'
 bg:
   defaultly_on: true # 是否默认开启 / Whether to turn on by default
   opacity: 0.25 # 透明度 / Opacity
+  blur: 10 # 模糊度(单位px，建议最高50) / Blur(unit px, maximum 50 recommended)
   pics:
     # day: 亮色模式/Light mode | night: 暗色模式/Dark mode | narrow: 窄屏/Narrow screen | wide: 宽屏/Wide screen
     # 支持config/bg目录下的图片和url / Support images in the config/bg directory and urls

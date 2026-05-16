@@ -5,15 +5,14 @@ import 'mdui/components/top-app-bar.js';
 import 'mdui/components/top-app-bar-title.js';
 import 'mdui/components/button-icon.js';
 import 'mdui/components/card.js';
-import 'mdui/components/divider.js';
 import 'mdui/components/fab.js';
 import 'mdui/components/chip.js';
 import 'mdui/components/list-item.js';
 import 'mdui/components/collapse.js'
 import 'mdui/components/collapse-item.js';
 import 'mdui/components/linear-progress.js';
+import 'mdui/components/icon.js';
 // icons
-import '@mdui/icons/shuffle.js';
 import '@mdui/icons/history.js';
 import '@mdui/icons/battery-0-bar.js';
 import '@mdui/icons/battery-charging-full.js';

@@ -124,6 +124,9 @@ mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item[nonclickable] 
     margin: 2px;
     font-size: 14px;
     color: rgb(var(--mdui-color-outline));
+    max-width: 100%;
+    word-break: break-all;
+    text-align: center;
 }
 
 .bg-container {
@@ -140,6 +143,8 @@ mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item[nonclickable] 
     object-fit: cover;
     -webkit-user-drag: none;
     user-select: none;
-    transition: opacity 0.5s;
+    transition: 
+        opacity 0.2s cubic-bezier(0.3, 0.35, 0, 1.00),
+        filter 0.2s cubic-bezier(0.3, 0.35, 0, 1.00);
     background-color: rgb(var(--mdui-color-surface));
 }

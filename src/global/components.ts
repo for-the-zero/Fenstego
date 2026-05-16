@@ -6,6 +6,7 @@ import 'mdui/components/list-item.js';
 import 'mdui/components/button-icon.js';
 import 'mdui/components/tooltip.js';
 import 'mdui/components/avatar.js';
+import 'mdui/components/divider.js';
 import { snackbar } from 'mdui/functions/snackbar.js';
 //
 import '@mdui/icons/light.js';
@@ -25,10 +26,10 @@ import { change_bg_mode } from './bg';
 import config_static_global from '../../configs/global.static.yaml';
 const lang = get_lang();
 export function init_sb(){
-    const ele_opener = $('.sidebar-open-btn');
-    const ele_sidebar = $('.sidebar');
-    ele_opener.on('click', () => {
-        ele_sidebar.prop('open',true);
+    const e_opener = $('.sidebar-open-btn');
+    const e_sidebar = $('.sidebar');
+    e_opener.on('click', () => {
+        e_sidebar.prop('open',true);
     });
 };
 const dn_order = {'auto': 'light', 'light': 'dark', 'dark': 'auto'};
