@@ -4,15 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404</title>
-    <link rel="icon" type="image/svg+xml" href="./assets/icon.svg" />
-    <link rel="stylesheet" href="./404.css">
     <script>
         document.addEventListener("DOMContentLoaded", ()=>{
             const hostnames_ele = document.getElementById("hostnames");
-            if(!hostnames_ele){
-                alert("Could not find the hostnames element.");
-                throw new Error("Could not find the hostnames element.");
-            };
             const hostnames = JSON.parse(hostnames_ele.textContent);
             const url = window.location.href;
             function findHostname(){
@@ -21,15 +15,20 @@
                         return hostnames[i];
                     };
                 };
-                alert("Could not find the hostname.");
-                throw new Error("Could not find the hostname.");
+                window.location.href = `../404.html`;
             };
             const hostname = findHostname();
             if(url!=`${hostname}/404.html` && url!=`${hostname}404.html`){
-                window.location.href = `${hostname}/404.html`;
+                if(/(?<!\d)\/20\d{2}\/(?!\d)/.test(window.location.pathname)){
+                    window.location.href = `${hostname}${hostname.endsWith('/') ? '' : '/'}blog/?name=${window.location.pathname.split('/').filter(Boolean).pop() || ''}`;
+                } else {
+                    window.location.href = `${hostname}${hostname.endsWith('/') ? '' : '/'}404.html`;
+                };
             };
         });
     </script>
+    <link rel="icon" type="image/svg+xml" href="./assets/icon.svg" />
+    <link rel="stylesheet" href="./404.css">
 </head>
 <body>
     <h1><!----></h1>

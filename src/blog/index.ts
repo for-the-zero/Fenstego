@@ -15,6 +15,8 @@ import 'mdui/components/list-item.js';
 import 'mdui/components/badge.js';
 import 'mdui/components/switch.js';
 import 'mdui/components/icon.js';
+import 'mdui/components/fab.js';
+import 'mdui/components/circular-progress.js';
 // icons
 import '@mdui/icons/tag.js';
 import '@mdui/icons/category--outlined.js';
@@ -23,6 +25,8 @@ import '@mdui/icons/access-time.js';
 import '@mdui/icons/filter-alt--outlined.js';
 import '@mdui/icons/grid-view--outlined.js';
 import '@mdui/icons/list.js';
+import '@mdui/icons/arrow-upward.js';
+import '@mdui/icons/keyboard-arrow-down.js';
 
 //
 import { init_i18n, get_lang } from '../global/i18n';
@@ -40,7 +44,7 @@ let filtered_posts = [...blog_posts] as blog_post[];
 let search_keyword = '';
 let selected_category = '';
 let selected_tag = '';
-let view_mode = 'grid';
+let view_mode = 'list';
 
 const e_search_input = $('.filter-item-container:eq(0) mdui-text-field');
 const e_categories_container = $('.filter-item-container:eq(1) .categories');
@@ -78,7 +82,8 @@ function chip_clear_selection($chips: JQuery) {
 function filter_posts() {
     filtered_posts = blog_posts.filter((post: blog_post) => {
         if (search_keyword) {
-            if (post.title.toLowerCase().indexOf(search_keyword.toString().toLowerCase()) === -1) {
+            if (post.title.toLowerCase().indexOf(search_keyword.toString().toLowerCase()) === -1
+                && (!post.filename || post.filename.toLowerCase().indexOf(search_keyword.toString().toLowerCase()) === -1)) {
                 return false;
             };
         };
@@ -100,7 +105,7 @@ function update_url() {
     if (search_keyword) {params.set('name', search_keyword);};
     if (selected_category) {params.set('cate', selected_category);};
     if (selected_tag) {params.set('tag', selected_tag);};
-    if (view_mode !== 'grid') {params.set('view', view_mode);};
+    if (view_mode === 'card') {params.set('view', 'card');};
     const newUrl = `${window.location.pathname}${params.toString() ? '?' : ''}${params.toString()}`;
     window.history.replaceState(null, '', newUrl);
 };
@@ -130,8 +135,11 @@ function init_from_url() {
             };
         });
     };
-    if (view) {
-        view_mode = view;
+    if (view === 'card') {
+        view_mode = 'card';
+        (e_view_switch[0] as any).checked = false;
+    } else {
+        view_mode = 'list';
         (e_view_switch[0] as any).checked = true;
     };
     filter_posts();
@@ -243,7 +251,7 @@ function show_posts(){
 show_posts();
 init_from_url();
 e_view_switch.on('change',()=>{
-    view_mode = (e_view_switch[0] as any).checked ? 'list' : 'grid';
+    view_mode = (e_view_switch[0] as any).checked ? 'list' : 'card';
     update_url();
     show_posts();
 });
@@ -260,4 +268,47 @@ e_ramd.on('hover mouseenter touchstart mouseup',()=>{
     };
     let post = get_post();
     e_ramd.attr('href', `./posts/${post}/`);
+});
+
+// scrolls btn
+const top_y = $('mdui-collapse').length && $('mdui-collapse').offset() ? $('mdui-collapse').offset()!.top : 0;
+const e_scrollfab = $('mdui-fab');
+const e_scroll_top = $('.2top-btn');
+const e_scroll_top_icon = e_scroll_top.find('mdui-icon-arrow-upward');
+const e_scroll_top_progress = e_scroll_top.find('mdui-circular-progress');
+e_scrollfab.on('click', ()=>{ 
+    window.scrollBy({
+        top: window.innerHeight,
+        behavior: 'smooth'
+    });
+});
+let scrollTimer: ReturnType<typeof setTimeout> | null = null;
+window.addEventListener('scroll', function() {
+    if(scrollTimer){
+        clearTimeout(scrollTimer);
+    };
+    scrollTimer = setTimeout(() => {
+        e_scroll_top_progress.val(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight));
+        if(window.scrollY < top_y - 4 * parseFloat(getComputedStyle(document.documentElement).fontSize)){
+            e_scroll_top.prop('disabled', true);
+        } else {
+            e_scroll_top.prop('disabled', false);
+        };
+    }, 100);
+});
+e_scroll_top_icon.hide();
+e_scroll_top.on('mouseenter touchstart',()=>{
+    e_scroll_top_icon.show();
+    e_scroll_top_progress.hide();
+});
+e_scroll_top.on('mouseleave touchend',()=>{
+    e_scroll_top_icon.hide();
+    e_scroll_top_progress.show();
+});
+e_scroll_top.on('click',()=>{
+    if(window.scrollY < top_y - 4 * parseFloat(getComputedStyle(document.documentElement).fontSize)){return;};
+    window.scrollTo({
+        top: top_y - 4 * parseFloat(getComputedStyle(document.documentElement).fontSize),
+        behavior: 'smooth'
+    });
 })

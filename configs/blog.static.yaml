@@ -3,7 +3,10 @@ zh-CN: # 语言: 中文
   - selector: 'mdui-top-app-bar-title'
     target: inner-html
     text: 博客 # 博客页面的顶部导航栏标题
-  - selector: 'mdui-top-app-bar > mdui-tooltip'
+  - selector: 'mdui-top-app-bar > mdui-tooltip:nth-of-type(1)'
+    target: content
+    text: '回到顶部' # 回到顶部按钮
+  - selector: 'mdui-top-app-bar > mdui-tooltip:nth-of-type(2)'
     target: content
     text: '随机看一篇' # 搜索栏的“随机”按钮
   - selector: '.container > h1'
@@ -27,7 +30,10 @@ en: # Language: English
   - selector: 'mdui-top-app-bar-title'
     target: inner-html
     text: Blog # The title in the top app bar on the blog page
-  - selector: 'mdui-top-app-bar > mdui-tooltip'
+  - selector: 'mdui-top-app-bar > mdui-tooltip:nth-of-type(1)'
+    target: content
+    text: 'Back to Top' # The tooltip text for the back to top button
+  - selector: 'mdui-top-app-bar > mdui-tooltip:nth-of-type(2)'
     target: content
     text: 'Random Post' # Random btn
   - selector: '.container > h1'

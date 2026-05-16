@@ -129,6 +129,12 @@ mdui-collapse-item > div.v-box{
     align-content: flex-start;
 }
 
+mdui-fab{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
 .seo-area{
     position: fixed;
     width: 0;
