@@ -1,5 +1,5 @@
 # Git 仓库地址（用于部署）/ Git repository address (for deployment)
-repo: 'git@github.com:for-the-zero/Revealry.git'
+repo: 'git@github.com:for-the-zero/Viderexo.git'
 
 blog_suffix: ' - Revealry Blog' # 文章标题后缀配置（支持字符串或按语言区分）/ Article title suffix configuration (supports string or language-specific)
 # blog_suffix:

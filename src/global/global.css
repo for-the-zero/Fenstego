@@ -128,6 +128,9 @@ mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item[nonclickable] 
     word-break: break-all;
     text-align: center;
 }
+.footer a{
+    color: rgb(var(--mdui-color-outline));
+}
 
 .bg-container {
     position: fixed;

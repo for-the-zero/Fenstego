@@ -13,11 +13,13 @@ body{
     font-size: 1.75em;
     margin: 0;
     padding-left: 30px;
+    user-select: text;
 }
 .container > p{
     margin: 0;
     white-space: pre-wrap;
     padding-left: 30px;
+    user-select: text;
 }
 
 mdui-menu-item::part(container){
