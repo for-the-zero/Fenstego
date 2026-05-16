@@ -1,18 +1,10 @@
 # Git 仓库地址（用于部署）/ Git repository address (for deployment)
 repo: 'git@github.com:for-the-zero/Revealry.git'
 
-blog:
-  # 文章标题后缀配置（支持字符串或按语言区分）/ Article title suffix configuration (supports string or language-specific)
-  suffix: ' - Revealry Blog'
-  # suffix:
-  #   'zh-CN': ' - Revealry 中文博客后缀'
-  #   'en': ' - Revealry Blog Suffix English'
-
-  # 每篇文章 head 注入的 HTML / HTML injected into the head of each article
-  head_inject:
-    - '<!-- 往每篇文章的head注入一些元素 -->'
-    - '<!-- Inject some elements into the head of each article -->'
-    # - '<script src="https://giscus.app/client.js" ...></script>'
+blog_suffix: ' - Revealry Blog' # 文章标题后缀配置（支持字符串或按语言区分）/ Article title suffix configuration (supports string or language-specific)
+# blog_suffix:
+#   'zh-CN': ' - Revealry 中文博客后缀'
+#   'en': ' - Revealry Blog Suffix English'
 
 sitemap:
   # 主域名 / Main hostname
@@ -36,6 +28,8 @@ rss:
   copyright: 'Copyright'
   # 作者 / Author
   author: 'Author'
+  # 语言 / Locale
+  locale: 'zh_CN' # ISO 639-1 / ISO 3166-1 alpha-2
 
 head:
   # 往每个页面 head 注入的 HTML（文章除外） / HTML injected into every page head (excluding articles)
@@ -46,3 +40,13 @@ head:
   home:
     - '<!-- 额外往首页的head注入一些元素 -->'
     - '<!-- Inject some elements into the head of the homepage -->'
+  # 每篇文章 head 注入的 HTML / HTML injected into the head of each article
+  blog:
+    - '<!-- 往每篇文章的head注入一些元素 -->'
+    - '<!-- Inject some elements into the head of each article -->'
+    # - '<script src="https://giscus.app/client.js" ...></script>'
+
+baidu_submit: false
+# baidu_submit: 
+#   site: '' # 在搜索资源平台验证的站点
+#   token: 'your token' # 在搜索资源平台申请的推送用的准入密钥

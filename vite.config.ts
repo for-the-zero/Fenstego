@@ -11,6 +11,7 @@ import { viteSitemapMulti } from './scripts/plugin-sitemap';
 import { viteExtendHead } from './scripts/plugin-head';
 import { viteRssFeed } from './scripts/plugin-rss';
 import { viteSeoArea } from './scripts/plugin-seo-area';
+import { viteBaiduPush } from './scripts/plugin-baidu-push';
 import { viteServerUrlFix, viteCopyImagesPlugin } from './scripts/vite-server-url-fix';
 import { copyCaAssets } from './scripts/plugin-ca-copy';
 
@@ -78,8 +79,11 @@ export default defineConfig({
     viteMeta(),
     yaml(),
     markdownBlog({
-      inject: config.blog?.head_inject || [],
-      suffix: config.blog?.suffix || ''
+      inject: config.head?.blog || [],
+      suffix: config.blog_suffix || '',
+      hostname: config.sitemap?.hostname || '',
+      locale: config.rss?.locale || '',
+      author: config.rss?.author || ''
     }),
     viteStaticCopy({
       targets: [
@@ -106,11 +110,16 @@ export default defineConfig({
       feedTitle: config.rss?.title || '',
       feedDescription: config.rss?.description || '',
       copyright: config.rss?.copyright || '',
-      author: config.rss?.author || ''
+      author: config.rss?.author || '',
+      locale: config.rss?.Locale || ''
     }),
     viteExtendHead({
       heads: config.head?.global || [],
       home: config.head?.home || []
+    }),
+    viteBaiduPush({
+      hostname: config.sitemap?.hostname || '',
+      baidu: config.baidu_submit || false
     }),
     viteSeoArea()
   ],

@@ -12,6 +12,9 @@ interface BlogPostConfig {
 interface MarkdownBlogOptions {
     inject?: string[];
     suffix?: string | { 'zh-CN': string; 'en': string };
+    hostname?: string;
+    locale?: string;
+    author?: string;
 }
 
 function escapeHtml(text: string): string {
@@ -45,13 +48,25 @@ export function markdownBlog(options: MarkdownBlogOptions = {}): Plugin {
         return suffix[lang as keyof typeof suffix] || suffix['en'] || '';
     };
 
-    function generateMetaTags(postInfo?: BlogPostConfig): string {
+    function generateMetaTags(postInfo: BlogPostConfig | undefined, slug: string): string {
         const cate = postInfo?.category || '';
-        const tags = Array.isArray(postInfo?.tags) ? postInfo.tags.join(', ') : (postInfo?.tags || '');
+        const tags = Array.isArray(postInfo?.tags) ? postInfo.tags : [];
+        const hostname = options.hostname ? options.hostname.replace(/\/$/, '') : '';
+        const pageUrl = hostname ? `${hostname}/blog/posts/${slug}/` : '';
+        const locale = options.locale || '';
+        const postAuthor = postInfo?.author || options.author || '';
+        const postDate = postInfo?.date || '';
+        const dateIso = postDate ? new Date(postDate.trim().replace(' ', 'T')).toISOString() : '';
+        const tagTags = tags.map(t => `<meta property="article:tag" content="${escapeHtml(String(t))}">`).join('\n');
         return `
 <meta name="cate" content="${escapeHtml(String(cate))}">
-<meta name="tags" content="${escapeHtml(String(tags))}">
+${tagTags}
 <meta property="og:type" content="article">
+${pageUrl ? `<meta property="og:url" content="${escapeHtml(pageUrl)}">` : ''}
+${locale ? `<meta property="og:locale" content="${escapeHtml(locale)}">` : ''}
+${dateIso ? `<meta property="article:modified_time" content="${escapeHtml(dateIso)}">` : ''}
+${postAuthor ? `<meta name="author" content="${escapeHtml(postAuthor)}">
+<meta property="article:author" content="${escapeHtml(postAuthor)}">` : ''}
         `;
     };
 
@@ -229,7 +244,7 @@ export function markdownBlog(options: MarkdownBlogOptions = {}): Plugin {
                     const title = postInfo ? postInfo.title : 'Untitled';
                     const suffixText = getSuffix(postInfo);
                     const displayTitle = title !== 'Untitled' && suffixText ? `${title}${suffixText}` : title;
-                    const metaTags = generateMetaTags(postInfo);
+                    const metaTags = generateMetaTags(postInfo, decodedSlug);
                     
                     const cateTagData = {
                         category: postInfo?.category || null,
@@ -281,7 +296,7 @@ export function markdownBlog(options: MarkdownBlogOptions = {}): Plugin {
                 const title = postInfo ? postInfo.title : 'Blog Post';
                 const suffixText = getSuffix(postInfo);
                 const displayTitle = title !== 'Untitled' && suffixText ? `${title}${suffixText}` : title;
-                const metaTags = generateMetaTags(postInfo);
+                const metaTags = generateMetaTags(postInfo, slug);
                 const injectionContent = inject.length > 0 ? (isHeadTagOnFirstLine(template) ? inject.join('') : inject.join('\n') + '\n') : '';
                 const entryKey = `blog/posts/${slug}/index`;
                 const entryChunk = Object.values(bundle).find(chunk =>

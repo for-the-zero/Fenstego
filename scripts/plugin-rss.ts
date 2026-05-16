@@ -84,9 +84,10 @@ export function viteRssFeed(opts: {
     feedDescription: string;
     copyright?: string;
     author?: string;
+    locale?: string;
 }): Plugin {
     let config: ResolvedConfig;
-    const { hostname, feedTitle, feedDescription, copyright, author } = opts;
+    const { hostname, feedTitle, feedDescription, copyright, author, locale } = opts;
     const baseHost = hostname.replace(/\/$/, '');
     return {
         name: 'vite-rss-feed',
@@ -131,6 +132,7 @@ export function viteRssFeed(opts: {
             lines.push(`  <link>${baseHost}</link>`);
             lines.push(`  <description>${feedDescription}</description>`);
             if (copyright) lines.push(`  <copyright>${copyright}</copyright>`);
+            if (locale) lines.push(`  <language>${locale.replace('_', '-')}</language>`);
             lines.push(`  <atom:link href="${baseHost}/rss.xml" rel="self" type="application/rss+xml" />`);
             for (const item of feedItems) {
                 lines.push('  <item>');

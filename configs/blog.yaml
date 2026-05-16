@@ -20,6 +20,7 @@
   # 文章标签列表
   # List of post tags
   - test1
+  - test114514
   allow_lang:
   # 允许显示该文章的语言列表
   # List of languages in which the post is allowed to be displayed
