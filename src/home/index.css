@@ -54,7 +54,7 @@ body > h1{
     transform: translate(-50%, -50%);
     margin: 0;
     max-width: 90vw;
-    text-shadow: 0 0 5px rgb(var(--mdui-color-surface));
+    text-shadow: 0 0 10px rgb(var(--mdui-color-surface));
     font-weight: 500;
     font-size: 2.5rem;
 }

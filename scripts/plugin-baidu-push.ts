@@ -93,10 +93,10 @@ export function viteBaiduPush(opts: { hostname: string; baidu: BaiduConfig | fal
 
             try {
                 const parsed = JSON.parse(data);
-                console.log(`[baidu-push] 成功 ${parsed.success} 条，剩余 ${parsed.remain} 条/天`);
-                if (parsed.not_valid?.length) console.log(`[baidu-push] 无效URL:`, parsed.not_valid);
-                if (parsed.not_same_site?.length) console.log(`[baidu-push] 非本站URL:`, parsed.not_same_site);
+                console.log(`[baidu-push] 成功`);
+                console.log(parsed);
             } catch {
+                console.log(data)
                 console.log(`[baidu-push] Response (${status}): ${data}`);
             };
         },

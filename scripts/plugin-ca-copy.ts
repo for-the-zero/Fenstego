@@ -46,6 +46,26 @@ function copyOrFallback(fileName: string, outPath: string) {
     };
 };
 
+function fixIconRefsInHtml(dir: string) {
+    if (!fs.existsSync(dir)) {
+        return;
+    };
+    const files = fs.readdirSync(dir, { withFileTypes: true });
+    for (const file of files) {
+        const fullPath = path.join(dir, file.name);
+        if (file.isDirectory()) {
+            fixIconRefsInHtml(fullPath);
+        } else if (file.isFile() && file.name.endsWith('.html')) {
+            let content = fs.readFileSync(fullPath, 'utf8');
+            const original = content;
+            content = content.replace(/(icon)-[a-z0-9]{8}\.(svg)/gi, '$1.$2');
+            if (content !== original) {
+                fs.writeFileSync(fullPath, content, 'utf8');
+            };
+        };
+    };
+};
+
 export function copyCaAssets() {
     return {
         name: 'copy-ca-copy',
@@ -107,6 +127,7 @@ export function copyCaAssets() {
             copyOrFallback('README.md', path.resolve(rootDir, 'dist/README.md'));
             copyOrFallback('avatar.png', path.resolve(rootDir, 'dist/assets/avatar.png'));
             copyOrFallback('icon.svg', path.resolve(rootDir, 'dist/assets/icon.svg'));
+            fixIconRefsInHtml(path.resolve(rootDir, 'dist'));
         }
     };
 };
