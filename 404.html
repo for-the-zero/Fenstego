@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404</title>
-    <link rel="icon" type="image/svg+xml" href="./assets/icon-BxuRo8Du.svg" />
     <script>
         document.addEventListener("DOMContentLoaded", ()=>{
             const hostnames_ele = document.getElementById("hostnames");
-            if(!hostnames_ele){
-                alert("Could not find the hostnames element.");
-                throw new Error("Could not find the hostnames element.");
-            };
             const hostnames = JSON.parse(hostnames_ele.textContent);
             const url = window.location.href;
             function findHostname(){
@@ -20,19 +15,23 @@
                         return hostnames[i];
                     };
                 };
-                alert("Could not find the hostname.");
-                throw new Error("Could not find the hostname.");
+                window.location.href = `../404.html`;
             };
             const hostname = findHostname();
             if(url!=`${hostname}/404.html` && url!=`${hostname}404.html`){
-                window.location.href = `${hostname}/404.html`;
+                if(/(?<!\d)\/20\d{2}\/(?!\d)/.test(window.location.pathname)){
+                    window.location.href = `${hostname}${hostname.endsWith('/') ? '' : '/'}blog/?name=${window.location.pathname.split('/').filter(Boolean).pop() || ''}`;
+                } else {
+                    window.location.href = `${hostname}${hostname.endsWith('/') ? '' : '/'}404.html`;
+                };
             };
         });
     </script>
-  <script type="module" crossorigin src="./assets/404-DSDlqhVS.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/global-CfNPYc7R.js">
+    <link rel="icon" type="image/svg+xml" href="./assets/icon-BxuRo8Du.svg" />
+  <script type="module" crossorigin src="./assets/404-DZp5rg7T.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/global-27ZSIaZX.js">
   <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-CXK8biUa.js">
-  <link rel="stylesheet" crossorigin href="./assets/404-CIf2bzwT.css">
+  <link rel="stylesheet" crossorigin href="./assets/404-xhZG5Mos.css">
 <!-- 往每个页面的head注入一些元素（文章除外） -->
 <!-- Inject some elements into the head of each page (excluding articles) -->
 </head>
