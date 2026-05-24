@@ -6,10 +6,10 @@ zh-CN: # 语言: 中文
         description: "这是这个项目的Github地址" # 链接项描述 (可为 null)
         links: # 链接列表 (可为 null)
           - name: "链接" # 链接名称（小标题）
-            content: "https://github.com/for-the-zero/Revealry" # 链接或文本内容
+            content: "https://github.com/for-the-zero/Viderexo" # 链接或文本内容
             type: url # 类型, 'text' 或 'url'
           - name: "名字"
-            content: "Revealry"
+            content: "Viderexo"
             type: text
       - name: "测试114514"
         img: "https://placehold.net/shape-400x400.png"
@@ -37,10 +37,10 @@ en: # Language: English
         description: "This is the Github address of this project" # Description of the link item (can be null)
         links: # List of links (can be null)
           - name: "Link" # Name of the link (small title)
-            content: "https://github.com/for-the-zero/Revealry" # Link or text content
+            content: "https://github.com/for-the-zero/Viderexo" # Link or text content
             type: url # Type, 'text' or 'url'
           - name: "Name"
-            content: "Revealry"
+            content: "Viderexo"
             type: text
       - name: "Test114514"
         img: "https://placehold.net/shape-400x400.png"

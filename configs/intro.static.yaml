@@ -52,7 +52,7 @@ zh-CN: # 语言: 中文
   #   text: '<mdui-icon-female style="color: rgb(var(--mdui-color-outline));"></mdui-icon-female>'
 
   _other:
-    title: 介绍 | Revealry 示例 # 设置浏览器标签页中显示的页面标题
+    title: 介绍 | Viderexo 示例 # 设置浏览器标签页中显示的页面标题
 
 en: # Language: English
   translations: 
@@ -108,4 +108,4 @@ en: # Language: English
   #   text: '<mdui-icon-female style="color: rgb(var(--mdui-color-outline));"></mdui-icon-female>'
 
   _other:
-    title: Intro | Revealry Demo # Sets the page title displayed in the browser tab
+    title: Intro | Viderexo Demo # Sets the page title displayed in the browser tab

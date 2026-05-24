@@ -28,7 +28,7 @@
   - en
 - title: Test Post 2
   desc: null
-  date: "1900-01-01 00:00:00"
+  date: "1900-01-01 00:00:00[custom time display!]"
   filename: test2
   category: normal
   tags:

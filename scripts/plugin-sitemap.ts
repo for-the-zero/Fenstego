@@ -8,6 +8,8 @@ import { execSync } from 'child_process';
 interface BlogItem { filename: string; title?: string; date?: string }
 interface MetaItem { path: string; title: string }
 
+const getProcessDate = (s: string): string => { const m = s.match(/^(.+?)\[(.+)\]$/); return m ? m[1].trim() : s; };
+
 export function viteSitemapMulti(opts: {
     hostname: string;
     is_hostname_netlify: boolean;
@@ -54,7 +56,7 @@ export function viteSitemapMulti(opts: {
             for (const it of blogList) {
                 if (!it.filename) continue;
                 const mdFile = path.join(root, `posts/${it.filename}.md`);
-                const date = it.date ? new Date(it.date) : gitTime(mdFile) ?? fs.statSync(mdFile).ctime;
+                const date = it.date ? new Date(getProcessDate(it.date)) : gitTime(mdFile) ?? fs.statSync(mdFile).ctime;
                 urlMap.set(`/blog/posts/${it.filename}/`, { loc: `/blog/posts/${it.filename}/`, lastmod: date });
             };
             if (default_lang) {

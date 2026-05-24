@@ -29,6 +29,12 @@ import '@mdui/icons/arrow-upward.js';
 import '@mdui/icons/keyboard-arrow-down.js';
 
 //
+function getDisplayDate(dateStr: string | undefined): string {
+    if (!dateStr) return '';
+    const match = dateStr.match(/^(.+?)\[(.+)\]$/);
+    return match ? match[2].trim() : dateStr;
+};
+//
 import { init_i18n, get_lang } from '../global/i18n';
 import config_static_blog from '../../configs/blog.static.yaml';
 init_i18n(config_static_blog);
@@ -207,7 +213,7 @@ function show_posts(){
                             <p>${post.desc ? post.desc : ''}</p>
                             <div class="h-box post-tags">
                                 ${post.date ? `
-                                    <mdui-tooltip content="${post.date}" placement="right">
+                                    <mdui-tooltip content="${getDisplayDate(post.date)}" placement="right">
                                         <mdui-chip variant="input">
                                             <mdui-icon-access-time slot="icon"></mdui-icon-access-time>
                                             <span></span>
@@ -237,7 +243,7 @@ function show_posts(){
                 ${post.desc ? `<mdui-tooltip content="${post.desc}">` : ''}
                     <mdui-list-item href="${post.filename ? `./posts/${post.filename}/` : post.href}">
                         <div class="h-box post-list-subt">
-                            <span>${post.date}</span>
+                            <span>${getDisplayDate(post.date)}</span>
                             <span>${post.category}${post.tags ? ' / ' : ''}${post.tags ? post.tags.join(' · '): ''}</span>
                         </div>
                         <h2>${post.title}</h2>
@@ -278,7 +284,7 @@ const e_scroll_top_icon = e_scroll_top.find('mdui-icon-arrow-upward');
 const e_scroll_top_progress = e_scroll_top.find('mdui-circular-progress');
 e_scrollfab.on('click', ()=>{ 
     window.scrollBy({
-        top: window.innerHeight,
+        top: window.innerHeight - 4 * parseFloat(getComputedStyle(document.documentElement).fontSize),
         behavior: 'smooth'
     });
 });

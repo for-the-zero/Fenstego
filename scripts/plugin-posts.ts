@@ -17,6 +17,18 @@ interface MarkdownBlogOptions {
     author?: string;
 }
 
+function getProcessDate(dateStr: string): string {
+    if (!dateStr) return '';
+    const match = dateStr.match(/^(.+?)\[(.+)\]$/);
+    return match ? match[1].trim() : dateStr;
+};
+
+function getDisplayDate(dateStr: string): string {
+    if (!dateStr) return '';
+    const match = dateStr.match(/^(.+?)\[(.+)\]$/);
+    return match ? match[2].trim() : dateStr;
+};
+
 function escapeHtml(text: string): string {
     return text
         .replace(/&/g, "&amp;")
@@ -55,7 +67,7 @@ export function markdownBlog(options: MarkdownBlogOptions = {}): Plugin {
         const pageUrl = hostname ? `${hostname}/blog/posts/${slug}/` : '';
         const locale = options.locale || '';
         const postAuthor = postInfo?.author || options.author || '';
-        const postDate = postInfo?.date || '';
+        const postDate = getProcessDate(postInfo?.date || '');
         const dateIso = postDate ? new Date(postDate.trim().replace(' ', 'T')).toISOString() : '';
         const tagTags = tags.map(t => `<meta property="article:tag" content="${escapeHtml(String(t))}">`).join('\n');
         return `
@@ -249,7 +261,7 @@ ${postAuthor ? `<meta name="author" content="${escapeHtml(postAuthor)}">
                     const cateTagData = {
                         category: postInfo?.category || null,
                         tags: postInfo?.tags || null,
-                        date: postInfo?.date || null
+                        date: getDisplayDate(postInfo?.date || '') || null
                     };
                     const postNavJson = generatePostNavJson(decodedSlug);
                     const pageHtml = template
@@ -317,7 +329,7 @@ ${postAuthor ? `<meta name="author" content="${escapeHtml(postAuthor)}">
                     const cateTagData = {
                         category: postInfo?.category || null,
                         tags: postInfo?.tags || null,
-                        date: postInfo?.date || null
+                        date: getDisplayDate(postInfo?.date || '') || null
                     };
                     const postNavJson = generatePostNavJson(slug);
                     let processedTemplate = template

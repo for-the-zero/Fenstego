@@ -22,6 +22,8 @@ interface FeedItem {
     guid: string;
 };
 
+const getProcessDate = (s: string): string => { const m = s.match(/^(.+?)\[(.+)\]$/); return m ? m[1].trim() : s; };
+
 const gitTime = (file: string, root: string): Date | null => {
     try {
         const t = execSync(`git log --diff-filter=A --follow --format=%at -- "${file}" | tail -1`, {
@@ -108,7 +110,8 @@ export function viteRssFeed(opts: {
                 const postUrl = `${baseHost}/blog/posts/${it.filename}/`;
                 let date: Date;
                 if (it.date) {
-                    const dateStr = it.date.trim().replace(' ', 'T');
+                    const processDate = getProcessDate(it.date);
+                    const dateStr = processDate.trim().replace(' ', 'T');
                     const parsedDate = new Date(dateStr);
                     date = isNaN(parsedDate.getTime()) ? (gitTime(mdFile, root) ?? fs.statSync(mdFile).ctime) : parsedDate;
                 } else {
