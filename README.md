@@ -1,4 +1,4 @@
-# <ruby>Viderexo<rt>videre + nexo</rt></ruby><span style="font-size: 10px">(formerly Revealry)</span>
+# Fenstego<span style="font-size: 10px">(formerly Revealry)</span>
 
 一个个人网站模板
 

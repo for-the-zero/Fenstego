@@ -8,7 +8,7 @@ zh-CN: # 语言: 中文
     text: 展开标签
 
   _other:
-    title: 链接 | Viderexo 示例 # 设置浏览器标签页中显示的页面标题
+    title: 链接 | Fenstego 示例 # 设置浏览器标签页中显示的页面标题
     copied_snackbar_msg: 复制成功 # 复制成功后显示的消息
 
 en: # Language: English
@@ -21,5 +21,5 @@ en: # Language: English
     text: Unfold Labels
 
   _other:
-    title: links | Viderexo Demo # Sets the page title displayed in the browser tab
+    title: links | Fenstego Demo # Sets the page title displayed in the browser tab
     copied_snackbar_msg: Copied! # Message displayed after successful copy

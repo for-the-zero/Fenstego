@@ -48,6 +48,10 @@ e_dn_btn.on('click', ()=>{
 });
 $('.glb-ctrl > mdui-tooltip:nth-child(2)').on('click',change_lang);
 $('.glb-ctrl > mdui-tooltip:nth-child(3)').on('click',change_bg_mode);
+$('.glb-ctrl > mdui-tooltip:nth-child(3)').on('contextmenu',(e)=>{
+    e.preventDefault();
+    change_bg_mode();change_bg_mode();
+});
 
 //
 import { assets_path } from './assets_path';

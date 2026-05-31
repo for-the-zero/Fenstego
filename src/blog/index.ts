@@ -121,15 +121,18 @@ function init_from_url() {
     const cate = params.get('cate');
     const tag = params.get('tag');
     const view = params.get('view');
+    let should_open_filter = false;
     if (name) {
         search_keyword = name;
         (e_search_input[0] as any).value = name;
+        should_open_filter = true;
     };
     if (cate) {
         selected_category = cate;
         e_category_chips.each((_: any, el: any) => {
             if (el.getAttribute('value') === cate) {
                 el.selected = true;
+                should_open_filter = true;
             };
         });
     };
@@ -138,6 +141,7 @@ function init_from_url() {
         e_tag_chips.each((_: any, el: any) => {
             if (el.getAttribute('value') === tag) {
                 el.selected = true;
+                should_open_filter = true;
             };
         });
     };
@@ -147,6 +151,9 @@ function init_from_url() {
     } else {
         view_mode = 'list';
         (e_view_switch[0] as any).checked = true;
+    };
+    if(should_open_filter){
+        $('mdui-collapse').val('content');
     };
     filter_posts();
     show_posts();

@@ -54,7 +54,17 @@ body > h1{
     transform: translate(-50%, -50%);
     margin: 0;
     max-width: 90vw;
-    text-shadow: 0 0 10px rgb(var(--mdui-color-surface));
+    color: rgb(var(--mdui-color-on-surface));
+    text-shadow: 
+        1px -1px 0 rgb(var(--mdui-color-surface)), 
+        1px -1px 0 rgb(var(--mdui-color-surface)), 
+        -1px 1px 0 rgb(var(--mdui-color-surface)), 
+        1px 1px 0 rgb(var(--mdui-color-surface)),
+        1px 0 0 rgb(var(--mdui-color-surface)),
+        -1px 0 0 rgb(var(--mdui-color-surface)),
+        0 1px 0 rgb(var(--mdui-color-surface)),
+        0 -1px 0 rgb(var(--mdui-color-surface)),
+        0 0 10px rgb(var(--mdui-color-surface));
     font-weight: 500;
     font-size: 2.5rem;
 }

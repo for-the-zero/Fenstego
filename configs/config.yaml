@@ -1,29 +1,29 @@
 # Git 仓库地址（用于部署）/ Git repository address (for deployment)
-repo: 'git@github.com:for-the-zero/Viderexo.git'
+repo: 'git@github.com:for-the-zero/Fenstego.git'
 
-blog_suffix: ' - Viderexo Blog' # 文章标题后缀配置（支持字符串或按语言区分）/ Article title suffix configuration (supports string or language-specific)
+blog_suffix: ' - Fenstego Blog' # 文章标题后缀配置（支持字符串或按语言区分）/ Article title suffix configuration (supports string or language-specific)
 # blog_suffix:
-#   'zh-CN': ' - Viderexo 中文博客后缀'
-#   'en': ' - Viderexo Blog Suffix English'
+#   'zh-CN': ' - Fenstego 中文博客后缀'
+#   'en': ' - Fenstego Blog Suffix English'
 
 sitemap:
   # 主域名 / Main hostname
-  hostname: 'https://for-the-zero.github.io/Viderexo'
+  hostname: 'https://for-the-zero.github.io/Fenstego'
   # 是否是Netlify托管（为true时URL转为小写）/ Whether hosted on Netlify (convert URLs to lowercase if true)
   is_hostname_netlify: false
   # 设置sitemap中/links和/blog是否有?lang=xxx / Set whether /links and /blog have ?lang=xxx in sitemap
   default_lang: null # null | zh-CN | en | both
   # 其他备选域名（可选）/ Alternative hostnames (optional)
   # alternatives:
-  #   - 'https://for-the-zero.github.io/Viderexo'
+  #   - 'https://for-the-zero.github.io/Fenstego'
 
 rss:
   # 域名（带末尾斜杠）/ Hostname (with trailing slash)
-  hostname: 'https://for-the-zero.github.io/Viderexo/'
+  hostname: 'https://for-the-zero.github.io/Fenstego/'
   # Feed 标题 / Feed title
-  title: 'Viderexo Blog RSS Feed'
+  title: 'Fenstego Blog RSS Feed'
   # Feed 描述 / Feed description
-  description: 'Latest blog posts from Viderexo'
+  description: 'Latest blog posts from Fenstego'
   # 版权信息 / Copyright information
   copyright: 'Copyright'
   # 作者 / Author

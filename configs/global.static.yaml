@@ -2,7 +2,7 @@ zh-CN: # 语言: 中文
   translations: 
     - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(1) > div > span'
       target: 'inner-html'
-      text: 'Viderexo Demo' # 侧边栏的标题
+      text: 'Fenstego Demo' # 侧边栏的标题
     - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(2) > span'
       target: 'inner-html'
       text: '首页' # 侧边栏首页按钮
@@ -53,7 +53,7 @@ en: # Language: English
   translations: 
     - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(1) > div > span'
       target: 'inner-html'
-      text: 'Viderexo Demo' # Sidebar title
+      text: 'Fenstego Demo' # Sidebar title
     - selector: 'mdui-navigation-drawer.sidebar > div > mdui-list > mdui-list-item:nth-child(2) > span'
       target: 'inner-html'
       text: 'Home' # Sidebar home button

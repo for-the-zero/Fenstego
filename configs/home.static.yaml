@@ -17,7 +17,7 @@ zh-CN: # 语言: 中文
       text: 博客 # 博客页面进入按钮
     
   _other:
-    title: 首页 | Viderexo演示 # 设置浏览器标签页中显示的页面标题
+    title: 首页 | Fenstego演示 # 设置浏览器标签页中显示的页面标题
 
 en: # Language: English
   translations:
@@ -38,4 +38,4 @@ en: # Language: English
       text: Blog # Blog page entry button
     
   _other:
-    title: Home | Viderexo Demo # Sets the page title displayed in the browser tab
+    title: Home | Fenstego Demo # Sets the page title displayed in the browser tab

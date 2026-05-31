@@ -23,7 +23,7 @@ zh-CN: # 语言: 中文
     text: 切换视图（卡片/列表） # 筛选旁边的开关
 
   _other: 
-    title: 博客 | Viderexo 示例 # 设置浏览器标签页中显示的页面标题
+    title: 博客 | Fenstego 示例 # 设置浏览器标签页中显示的页面标题
 
 en: # Language: English
   translations: 
@@ -50,4 +50,4 @@ en: # Language: English
     text: Toggle View # Switch beside th filter
 
   _other: 
-    title: Blog | Viderexo Demo # Sets the page title displayed in the browser tab.
+    title: Blog | Fenstego Demo # Sets the page title displayed in the browser tab.

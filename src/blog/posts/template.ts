@@ -249,3 +249,12 @@ if(e_postnav_data.length){
 } else {
     e_drawer_btn.hide();
 };
+
+//
+const e_back_btn = $('.back-btn');
+if (document.referrer && new URL(document.referrer).hostname === window.location.hostname){
+    e_back_btn.removeAttr('href');
+    e_back_btn.on('click', ()=>{
+        window.history.back();
+    });
+};
