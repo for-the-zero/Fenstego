@@ -89,7 +89,8 @@ function filter_posts() {
     filtered_posts = blog_posts.filter((post: blog_post) => {
         if (search_keyword) {
             if (post.title.toLowerCase().indexOf(search_keyword.toString().toLowerCase()) === -1
-                && (!post.filename || post.filename.toLowerCase().indexOf(search_keyword.toString().toLowerCase()) === -1)) {
+                && (!post.filename || post.filename.toLowerCase().indexOf(search_keyword.toString().toLowerCase()) === -1)
+                && (!post.desc || post.desc.toLowerCase().indexOf(search_keyword.toString().toLowerCase()) === -1)) {
                 return false;
             };
         };
@@ -295,19 +296,13 @@ e_scrollfab.on('click', ()=>{
         behavior: 'smooth'
     });
 });
-let scrollTimer: ReturnType<typeof setTimeout> | null = null;
 window.addEventListener('scroll', function() {
-    if(scrollTimer){
-        clearTimeout(scrollTimer);
+    e_scroll_top_progress.val(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight));
+    if(window.scrollY < top_y - 4 * parseFloat(getComputedStyle(document.documentElement).fontSize)){
+        e_scroll_top.prop('disabled', true);
+    } else {
+        e_scroll_top.prop('disabled', false);
     };
-    scrollTimer = setTimeout(() => {
-        e_scroll_top_progress.val(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight));
-        if(window.scrollY < top_y - 4 * parseFloat(getComputedStyle(document.documentElement).fontSize)){
-            e_scroll_top.prop('disabled', true);
-        } else {
-            e_scroll_top.prop('disabled', false);
-        };
-    }, 100);
 });
 e_scroll_top_icon.hide();
 e_scroll_top.on('mouseenter touchstart',()=>{

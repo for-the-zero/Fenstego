@@ -38,6 +38,19 @@ export function change_bg_mode(){
     init_bg();
 };
 
+var prev_bg = '';
+function get_bg_src(pics: string[]){
+    while(true){
+        if(pics.length == 1){
+            return pics[0];
+        };
+        let pic = pics[Math.floor(Math.random() * pics.length)];
+        if(pic != prev_bg){
+            prev_bg = pic;
+            return pic;
+        };
+    };
+};
 export function init_bg() {
     e_bg.css('opacity', 0);
     e_bg.css('filter', `blur(50px)`);
@@ -52,7 +65,7 @@ export function init_bg() {
         pics = nw == 'wide' ? bg.pics.night_wide : bg.pics.night_narrow;
     };
     if(!pics.length){return;};
-    src = pics[Math.floor(Math.random() * pics.length)];
+    src = get_bg_src(pics);
     if(!src.includes('://')){
         src = `${assets_path}bg/${src}`;
     };
@@ -64,10 +77,16 @@ export function init_bg() {
     };
     loader.src = src;
 };
+
+import { snackbar } from 'mdui/functions/snackbar';
 loader.onerror = () => {
     if(!bg_on){return;};
     if(retry > 3){
         bg_on = false;
+        snackbar({
+            message: '背景图片加载失败',
+            closeable: true,
+        });
     };
     retry++;
     init_bg();
