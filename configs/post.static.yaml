@@ -5,10 +5,10 @@ zh-CN: # 语言: 中文
     text: 章节目录 # 右上角打开目录按钮
   - selector: '.cate-tag > mdui-tooltip > div[slot="content"] > span:nth-of-type(1)'
     target: inner-html
-    text: 单词数：
+    text: 字符数：
   - selector: '.cate-tag > mdui-tooltip > div[slot="content"] > span:nth-of-type(3)'
     target: inner-html
-    text: 字符数：
+    text: 单词数：
   - selector: '.cate-tag > mdui-tooltip > div[slot="content"] > span:nth-of-type(5)'
     target: inner-html
     text: 预计阅读时长：
