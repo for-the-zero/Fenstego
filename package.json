@@ -7,7 +7,8 @@
     "build": "vite build",
     "deploy": "node scripts/deploy.js",
     "draft": "bun scripts/move-draft.js",
-    "ap": "bun scripts/add-post.js"
+    "ap": "bun scripts/add-post.js",
+    "push-baidu": "bun scripts/plugin-baidu-push.ts"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.32",
